@@ -1,0 +1,127 @@
+<% moment.locale('vi')%>
+<%- include ('./header.ejs') %>
+<br>
+<div id="main" class="site-main">
+  <div class="layout-medium"> 
+      <div id="primary" class="content-area with-sidebar">
+          <!-- site-content -->
+          <div id="content" class="site-content" role="main">
+              <!-- BLOG LIST -->
+              <div class="blog-bold waterfall blog-stream">
+                  <!-- post -->
+                  <% listBlog && listBlog.length && listBlog.forEach(blog => {%> 
+                    <article class="hentry has-post-thumbnail slideUp">
+                      <div class="post-thumbnail" style="background-image:url(<%=blog.image%>)">
+                          <header class="entry-header">
+                              <div class="entry-meta">
+                                  <span class="cat-links">
+                                      <a href="#" title="View all posts in Life" rel="category tag">
+                                        <% CATEGORY.forEach(category => { %>
+                                            <% if (category.id == blog.category) { %>
+                                                  <%=category.title%> 
+                                            <% } %>
+                                        <% }) %>
+                                      </a>
+                                  </span>	
+                              </div>
+                              
+                              <h2 class="entry-title"><a href="/blog/<%=blog._id%>"><%=blog.title %> </a></h2>
+                          
+                              <div class="entry-meta">
+                                  <span class="entry-date">
+                                      <time class="entry-date" datetime="2014-07-13T04:34:10+00:00"><%=moment(blog.createAt).format('LL'); %></time>
+                                  </span> 
+                                  <span class="comment-link">
+                                      <a href="#comments"><%=blog.views%> Lượt xem</a>
+                                  </span>
+                              </div>
+                              
+                              <p><a href="/blog/<%=blog._id%>" class="more-link">Xem bài viết</a></p>
+                          </header>
+                      </div>
+                  </article>
+                  <%})%> 
+                  
+              </div>
+            <!-- BLOG BOLD --> 
+              
+              <!-- post pagination -->
+              <nav class="post-pagination">
+                  <ul class="pagination">
+                    <li class="pagination-first"><a href="#"> First </a></li>
+                    <li class="pagination-prev"><a href="#" rel="prev"></a></li>
+                    <li class="pagination-num"><a href="#"> 1 </a></li>
+                    <li class="pagination-num current"><a href="#"> 2 </a></li>
+                    <li class="pagination-num"><a href="#"> 3 </a></li>
+                    <li class="pagination-next"><a href="#" rel="next"></a></li>
+                    <li class="pagination-last"><a href="#"> Last </a> </li>
+                  </ul>
+              </nav>
+              <!-- post pagination -->
+              
+              
+              
+              
+              
+                  
+              
+              
+              
+              
+          </div>
+          <!-- site-content -->
+  
+      </div>
+      <!-- primary -->    
+  
+      <!-- #secondary -->
+      <div id="secondary" class="widget-area sidebar" role="complementary">
+      
+          <!-- widget : text -->
+          <aside class="widget widget_text">
+            <h3 class="widget-title">About Me</h3>
+            <div class="textwidget">
+              <p><img src="/template/images/site/avatar_main_square.jpg" alt="avatar"></p>
+              <p>Xin chào! Mình là Đạt đây, hiện tại mình là một ITBA. Đây là website của mình nhằm chia sẻ các câu chuyện trong cuộc sống cũng như chia sẻ các kiến thức bổ ích về lập trình và BA</p>
+            </div>
+          </aside>
+          <!-- widget : text -->
+          
+          <!-- widget : text -->
+          <aside class="widget widget_text">
+            <h3 class="widget-title">Follow Me</h3>
+            <div class="textwidget">
+              <p>
+                  <a class="social-link facebook" href="https://www.facebook.com/TOTHANHDAT.TTD/"></a>
+                  <a class="social-link linkedin" href="https://www.linkedin.com/in/tothanhdat/"></a>
+                  <a class="social-link github" href="https://github.com/tothanhdat"></a>
+                  <a class="social-link instagram" href="https://www.instagram.com/tothanhdat.it/"></a>
+              </p>
+            </div>
+          </aside>
+          <!-- widget : text -->
+          
+          <!-- styles for plugin : https://wordpress.org/plugins/top-10 -->
+          <aside class="widget widget_widget_tptn_pop">
+              <h3 class="widget-title">Trending Posts</h3>
+              <div class="tptn_posts tptn_posts_widget">
+                  <ul>
+                    <% listBlogTrending && listBlogTrending.length && listBlogTrending.forEach(blog => { %>
+                      <li>
+                        <a href="#" class="tptn_link">
+                            <img style="max-width: 20%" src="<%=blog.image%>" alt="post-image" class="tptn_thumb">
+                        </a>
+                          <span class="tptn_after_thumb">
+                              <a href="#" class="tptn_link"><span class="tptn_title"><%=blog.title%></span></a>
+                              <!--<span class="tptn_author"> by <a href="#">Johnny Doe</a></span>-->
+                              <span class="tptn_date"> <%=moment(blog.createAt).format('L'); %></span> 
+                          </span>
+                      </li>
+                    <% }) %>
+                  </ul>
+              </div>
+          </aside>
+      </div>
+  </div>
+</div>
+<%- include ('./footer.ejs') %>

@@ -1,0 +1,134 @@
+<% moment.locale('vi')%>
+<%- include ('./header.ejs') %>
+<div id="main" class="site-main">
+			
+    <!-- InstanceBeginEditable name="TopContent" -->
+    
+    <!-- .featured-top -->
+    <div class="featured-top">
+            
+        <img src="<%=infoBlog.image %>" alt="post-image">
+        
+        <!-- .post-thumbnail -->
+        <div class="post-thumbnail" style="background-image:url(<%=infoBlog.image%>)">
+                                  
+            <!-- .entry-header -->
+            <header class="entry-header">
+                
+                                
+                <!-- .entry-meta -->
+                <div class="entry-meta">
+                    <span class="cat-links">
+                        <a href="#" title="View all posts in Travel" rel="category tag">
+                            <% CATEGORY.forEach(category => { %>
+                                <% if (category.id == infoBlog.category) { %>
+                                      <%=category.title%> 
+                                <% } %>
+                            <% }) %>
+                        </a>
+                    </span>	
+                </div>
+                <!-- .entry-meta -->
+                
+                <!-- .entry-title -->
+                <h1 class="entry-title"><%=infoBlog.title %> </h1>
+                                
+                <!-- .entry-meta -->
+                <div class="entry-meta">
+                    <span class="entry-date">
+                        <time class="entry-date" datetime="2014-07-13T04:34:10+00:00"><%=moment(infoBlog.createAt).format('LL'); %> </time>
+                    </span> 
+                    <span class="comment-link">
+                        <a href="#comments"><%=infoBlog.views%> Lượt xem</a>
+                    </span>
+                </div>
+                <!-- .entry-meta -->
+                
+            </header>
+            <!-- .entry-header -->
+            
+        </div>
+        <!-- .post-thumbnail -->
+        
+    </div>
+    <!-- .featured-top -->	
+    
+    
+    <!-- InstanceEndEditable -->
+    
+    <div class="layout-medium"> 
+        <div id="primary" class="content-area">
+     
+            <div id="content" class="site-content" role="main">
+            
+                    <!-- .hentry -->
+                    <article class="hentry post single-post">
+                    
+                        
+                        <!-- .entry-content -->
+                        <div class="entry-content">
+                                                                
+                            <div class="content-ckeditor">
+
+                            </div>
+                            
+                        </div>
+                        <!-- .entry-content -->
+                            
+                             <!-- .post-tags -->
+                             <div class="post-tags tagcloud">
+                                <a href="#" rel="tag">travel</a>
+                                <a href="#" rel="tag">earth</a>
+                                <a href="#" rel="tag">think</a>
+                             </div>
+                             <!-- .post-tags -->
+                            
+                             
+                             <!-- .share-links -->
+                             <div class="share-links">
+                                
+                                <h3>SHARE THIS POST</h3>
+                                                                
+                                <a rel="nofollow" target="_blank" href="mailto:?subject=I wanted you to see this post&amp;body=Check out this post : Sketching Mickey - http://themes.pixelwars.org/editor-html/blog-single.html." title="Email this post to a friend"><i class="pw-icon-mail"></i></a>
+                                
+                                <a rel="nofollow" target="_blank" href="http://twitter.com/home?status=Currently reading: 'Sketching Mickey' http://themes.pixelwars.org/editor-html/blog-single.html" title="Share this post with your followers"><i class="pw-icon-twitter"></i></a>
+                                  
+                                <a rel="nofollow" target="_blank" href="http://www.facebook.com/sharer.php?u=http://themes.pixelwars.org/editor-html/blog-single.html&amp;t=Sketching Mickey" title="Share this post on Facebook"><i class="pw-icon-facebook"></i></a>
+                                
+                                <a rel="nofollow" target="_blank" href="https://plus.google.com/share?url=http://themes.pixelwars.org/editor-html/blog-single.html" title="Share this post on Google+"><i class="pw-icon-gplus"></i></a>
+                                
+                             </div>
+                             <!-- .share-links -->
+                    </article>
+            </div>
+            <!-- site-content -->
+    
+        </div>
+        <!-- primary -->    
+    
+    </div>
+    <!-- layout -->
+
+</div>        
+<%- include ('./footer.ejs') %>
+
+<script>
+    $(document).ready(function(){
+        let blogID = `<%=infoBlog._id%>`
+        $.ajax({
+            url: `/blog/info/${blogID}`,
+            method: 'GET',
+            success: resp => {
+                let infoBlog = resp.data;
+                console.log({ infoBlog });
+                if(!resp.error){
+                    $('.content-ckeditor').append(infoBlog.content)
+                }else{
+                    return toastr['error']('Thêm thất bại', 'Thông báo');
+                }
+            },
+            error: err => console.log({ err })
+        });
+    })
+    
+</script>

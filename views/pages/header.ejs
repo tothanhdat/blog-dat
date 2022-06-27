@@ -1,0 +1,166 @@
+<!doctype html>
+
+<html lang="en" class="minimal-style is-menu-fixed is-always-fixed is-selection-shareable blog-animated header-light header-small" data-effect="slideUp"><!-- InstanceBegin template="/Templates/layout.dwt" codeOutsideHTMLIsLocked="true" -->
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Impose - Responsive HTML5 Template">
+    <meta name="keywords" content="personal, blog, html5">
+    <meta name="author" content="Pixelwars">
+    <title>Impose - for bloggers</title>
+    
+    <!-- FAV and TOUCH ICONS -->
+    <link rel="shortcut icon" href="/template/images/ico/favicon.ico">
+    <link rel="apple-touch-icon" href="/template/images/ico/apple-touch-icon.png">
+    
+    <!-- FONTS -->
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700|Noto+Sans:400,400i,700,700i|Poppins:300,400,500,600,700" rel="stylesheet">
+    
+    <!-- STYLES -->
+    <link rel="stylesheet" type="text/css" href="/template/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/template/css/fonts/fontello/css/fontello.css">
+    <link rel="stylesheet" type="text/css" href="/template/js/jquery.magnific-popup/magnific-popup.css">
+    <link rel="stylesheet" type="text/css" href="/template/js/jquery.fluidbox/fluidbox.css">
+    <link rel="stylesheet" type="text/css" href="/template/js/owl-carousel/owl.carousel.css">
+    <link rel="stylesheet" type="text/css" href="/template/js/selection-sharer/selection-sharer.css">
+    <link rel="stylesheet" type="text/css" href="/template/css/rotate-words.css">
+    <link rel="stylesheet" type="text/css" href="/template/css/align.css">
+    <link rel="stylesheet" type="text/css" href="/template/css/main.css">
+    <link rel="stylesheet" type="text/css" href="/template/js/shortcodes/shortcodes.css">
+    <link rel="stylesheet" type="text/css" href="/template/css/768.css">
+    <link rel="stylesheet" type="text/css" href="/template/css/992.css">
+    
+    
+    <!-- InstanceBeginEditable name="head" -->
+    <!-- InstanceEndEditable -->
+    
+        
+    
+    <!-- InstanceParam name="PostSlider" type="boolean" value="false" -->
+    <!-- InstanceParam name="Sidebar" type="boolean" value="false" -->
+    <!-- InstanceParam name="PageDefault" type="boolean" value="true" -->
+    <!-- InstanceParam name="PageFixed" type="boolean" value="false" -->
+    <!-- InstanceParam name="PageFull" type="boolean" value="false" -->
+    <!-- InstanceParam name="SliderItems" type="number" value="3" -->
+    <!-- InstanceParam name="SliderNav" type="boolean" value="true" -->
+    <!-- InstanceParam name="SliderDots" type="boolean" value="false" -->
+    <!-- InstanceParam name="HeaderLight" type="boolean" value="true" -->
+    <!-- InstanceParam name="HeaderSmall" type="boolean" value="true" -->
+    <!-- InstanceParam name="SinglePost" type="boolean" value="false" -->
+    <!-- InstanceParam name="SinglePage" type="boolean" value="false" -->
+    <!-- InstanceParam name="CategoryPage" type="boolean" value="false" -->
+    
+	<!-- INITIAL SCRIPTS -->
+	<script src="/template/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="  ">
+
+    <!-- page -->
+    <div id="page" class="hfeed site">
+        
+        <!-- header -->
+        <header id="masthead" class="site-header" role="banner">
+            
+            <!-- site-navigation -->
+            <nav id="primary-navigation" class="site-navigation primary-navigation" role="navigation">
+                
+                <!-- layout-medium -->
+                <div class="layout-medium">
+                    
+                    <!-- site-title : image-logo -->
+                    <h1 class="site-title">
+                        <a href="/">
+                            <img src="/template/images/site/signature.png" alt="logo">
+                        	<span class="screen-reader-text">Haley Dust</span>
+                        </a>
+                    </h1>
+                    <!-- site-title -->
+                    
+                    <!-- site-title : text-logo -->
+                    <!--<h1 class="site-title">
+                        <a href="../index.html" rel="home">
+                            Haley Dust
+                        </a>
+                    </h1>-->
+                    <!-- site-title -->
+                    
+                    
+                    
+                
+                    <a class="menu-toggle"><span class="lines"></span></a>
+                    
+                    <!-- nav-menu -->
+                    <div class="nav-menu">
+                        <ul>
+                            <li><a href="/">HOME</a>
+                                <!-- level 2 -->
+                            </li>
+                            
+                            <li><a href="/about-me">ABOUT ME</a></li>
+
+                            <% 
+                                const CATEGORY = [
+                                    {
+                                        id: 1,
+                                        title: "Life",
+                                        image: "https://imgur.com/jJ5fEDg.jpg"
+                                    },
+                                    {
+                                        id: 2,
+                                        title: "Travel",
+                                        image: "https://imgur.com/ICqNK8y.jpg"
+                                    },
+                                    {
+                                        id: 3,
+                                        title: "BA Sharing",
+                                        image: "https://imgur.com/W7sh9w6.jpg"
+                                    },
+                                ]
+                            %>
+
+                            <% CATEGORY.forEach(category => { %>
+                                <li><a href="/category?categoryID=<%=category.id%>"><%=category.title %> </a></li>
+                            <% }) %>
+
+                        </ul>
+                    </div>
+                    <!-- nav-menu -->
+                    
+                    <a class="search-toggle toggle-link"></a>
+                                        
+                    <!-- search-container -->
+                    <div class="search-container">
+                        
+                        <div class="search-box" role="search">
+                            <form method="get" class="search-form" action="#">
+                                <label>Search Here
+                                    <input type="search" id="search-field" placeholder="type and hit enter" name="s">
+                                </label>
+                                <input type="submit" class="search-submit" value="Search">
+                            </form>
+                        </div>
+                    
+                    </div>
+                    <!-- search-container -->
+                    
+                    <!-- social-container -->
+                    <div class="social-container">
+                        
+                        <a class="social-link facebook" href="https://www.facebook.com/TOTHANHDAT.TTD/"></a>
+                        <a class="social-link linkedin" href="https://www.linkedin.com/in/tothanhdat/"></a>
+                        <a class="social-link github" href="https://github.com/tothanhdat"></a>
+                        <a class="social-link instagram" href="https://www.instagram.com/tothanhdat.it/"></a>
+    
+                    </div>
+                    <!-- social-container -->
+        
+                </div>
+                <!-- layout-medium -->
+                
+            </nav>
+        
+        </header>
