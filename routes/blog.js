@@ -45,7 +45,7 @@ route.get('/list-post-trending', async (req, res) => {
 
 route.get('/:blogID', async (req, res) => {
     let { blogID } = req.params;
-    let infoBlog = await BLOG_MODEL.getInfo({ blogID })
+    let infoBlog = await BLOG_MODEL.getInfo({ blogID, views: 1 })
     res.render('pages/info-post', { infoBlog: infoBlog.data, moment, CATEGORY })
 })
 

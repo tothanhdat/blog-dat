@@ -63,7 +63,7 @@ module.exports = class BLOG extends BLOG_COLL {
         })
     }
 
-    static getInfo({ blogID }) {
+    static getInfo({ blogID, views }) {
         return new Promise(async resolve => {
             try {
                 
@@ -75,7 +75,9 @@ module.exports = class BLOG extends BLOG_COLL {
                 let viewsCurrent = infoBlog.views;
 
                 //Update view when seen detai blog
-                await BLOG.findByIdAndUpdate(blogID, {views: viewsCurrent + 1}, {new: true})
+                if(views){
+                    await BLOG.findByIdAndUpdate(blogID, {views: viewsCurrent + 1}, {new: true})
+                }
 
                 if (!infoBlog) return resolve({ error: true, message: 'cannot_get_info' });
 
