@@ -2,39 +2,22 @@
         <!-- site-main -->
         <div id="main" class="site-main">
 	
-			<!-- InstanceBeginEditable name="TopContent" -->
-			
-			<!-- InstanceEndEditable -->
-   
-             
             <div class="layout-medium"> 
                 <div id="primary" class="content-area">
        
-                    <!-- site-content -->
                     <div id="content" class="site-content" role="main">
-                    
                                     
-                        <!-- InstanceBeginEditable name="PageContent" -->
-                        
-                        <!-- .hentry -->
                         <article class="hentry page">
                             
-                                
-                            <!-- .entry-content -->
                             <div class="entry-content intro" data-animation="rotate-1">
                                 
-                                
-                                
-                                <!-- .profile-image -->
                                 <div class="profile-image">
                                 	<img alt="profile" src="/template/images/site/avatar_main_square.jpg">
                                 </div>  
-                                <!-- .profile-image -->
                                 
                                 <h2><em>Hi.</em> I'm Dat</h2>
                                 <h3>I am a <strong>IT Business Analyst</strong> <strong>Fullstack Developer</strong></h3>
                                 
-                                <!-- .link-boxes -->
                                 <figure>
                                 	<a href="/about-me"><img src="/template/images/site/about_me.jpg" alt="About Me"></a>
                                     <figcaption class="wp-caption-text">About Me</figcaption>
@@ -47,27 +30,15 @@
                                 <% }) %>
                                     
                              </div> 
-                             <!-- .entry-content -->
-                                
-                                	
                                     
                          </article> 
-                         <!-- .page -->
                                  
-                                 
-                                 
-                                 
-                       <!-- .home-title -->
                        <h3 class="widget-title home-title">LATEST FROM THE BLOG</h3>  
                          
-                        
-                       <!-- BLOG SIMPLE -->
                        <div class="blog-simple">
                             <% listBlog && listBlog.length && listBlog.forEach(blog => { %>
                              
-                            <!-- .hentry -->
                             <article class="hentry post has-post-thumbnail">
-                                <!-- .hentry-left -->
                                 <div class="hentry-left">
                                     <div class="entry-date">
                                         <span class="day"><%=blog.createAt.getDate() %> </span>
@@ -76,46 +47,25 @@
                                     </div>
                                     <div class="featured-image" style="background-image:url(<%=blog.image%>)"></div>
                                 </div>
-                                <!-- .hentry-left -->
-                                
-                                <!-- .hentry-middle -->
                                 <div class="hentry-middle">
-                                        
-                                    <!-- .entry-title -->
                                     <h2 class="entry-title"><a href="/blog/<%=blog._id %> "><%=blog.title%> </a></h2>
                             
                                 </div>
-                                <!-- .hentry-middle -->
-                                
                                 <a class="post-link" href="/blog/<%=blog._id %> "><%=blog.title%> </a>
                                 
                             </article>
 
                             <% }) %>
-
-                            <!-- .hentry -->
                             
                        </div> 
-                       <!-- BLOG SIMPLE -->
                       
-                      <!-- .home-launch -->
                       <div class="home-launch">
                         <a class="button" href="/category">Xem tất cả</a>
                       </div> 
-                      <!-- .home-launch -->
-                        
-                        <!-- InstanceEndEditable -->
                         
                     </div>
-                    <!-- site-content -->
-            
                 </div>
-                <!-- primary -->    
-            
             </div>
-            <!-- layout -->
-        
         </div>
-        <!-- site-main -->
         
 <%- include ('./footer.ejs') %>

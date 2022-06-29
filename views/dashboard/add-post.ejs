@@ -1,0 +1,149 @@
+<%- include ('./header.ejs') %>
+<%- include ('./sidebar.ejs') %>
+           
+            <!-- ============================================================== -->
+            <!-- Start right Content here -->
+            <!-- ============================================================== -->
+            <div class="main-content">
+
+                <div class="page-content">
+                    <div class="container-fluid">
+
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h4 class="card-title">Tạo bài viết</h4>
+                                        <p class="card-title-desc">Các bài viết sẽ được hiển thị trên website.</p>
+                                    </div>
+                                    <div class="card-body p-4">
+                                        <div class="row">
+                                            <div class="col-lg-6">
+                                                <div>
+                                                    <div class="mb-3">
+                                                        <label for="example-text-input" class="form-label">Tiêu đề</label>
+                                                        <input class="form-control" type="text" value="" id="title">
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <label class="form-label">Danh mục</label>
+                                                        <select class="form-select" id="category">
+                                                            <%CATEGORY.forEach(category => { %>
+                                                                <option value="<%=category.id%>"><%=category.title%></option>
+                                                            <% }) %>
+                                                        </select>
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <label for="example-email-input" class="form-label">Hình ảnh</label>
+                                                        <div>
+                                                            <form action="#" class="dropzone">
+                                                                <div class="fallback">
+                                                                    <input name="file" type="file" multiple="multiple">
+                                                                </div>
+                                                                <div class="dz-message needsclick">
+                                                                    <div class="mb-3">
+                                                                        <i class="display-4 text-muted bx bx-cloud-upload"></i>
+                                                                    </div>
+                    
+                                                                    <h5>Drop files here or click to upload.</h5>
+                                                                </div>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <label for="example-url-input" class="form-label">URL Hình ảnh (Optional)</label>
+                                                        <input class="form-control" type="url" value="" id="image">
+                                                    </div>
+                                                    
+                                                </div>
+                                            </div>
+
+                                            <div class="col-lg-6">
+                                                <div class="mt-3 mt-lg-0">
+                                                    <div class="mb-3">
+                                                        <label for="example-date-input" class="form-label">Nội dung bài viết</label>
+                                                        <div name= "editor" class="editor__editable_inline" id="editor" aria-placeholder=""></div>
+                                                    </div>
+                                                    <script>
+                                                        CKEDITOR.replace('editor', {
+                                                            height: '380px',
+                                                        });
+                                                    </script>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div style="text-align: right;">
+                                            <button type="submit" class="btn btn-primary w-md add-post">Tạo mới</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div> <!-- end col -->
+                        </div>
+                    </div>
+                    <!-- container-fluid -->
+                </div>
+                <!-- End Page-content -->
+
+
+                <footer class="footer">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <script>document.write(new Date().getFullYear())</script> © Minia.
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="text-sm-end d-none d-sm-block">
+                                    Design & Develop by <a href="#!" class="text-decoration-underline">Themesbrand</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </footer>
+            </div>
+            <!-- end main content-->
+
+        </div>
+        <!-- END layout-wrapper -->
+
+<%- include ('./footer.ejs') %>
+
+<script>
+
+    $(document).ready(function(){
+
+        $(document).on('click', '.add-post', function(e) {
+            e.preventDefault();
+
+            let title       = $('#title').val().trim();
+            let image 	    = $('#image').val().trim();
+            let category 	= $('#category').val().trim();
+            let content 	= CKEDITOR.instances['editor'].getData();
+
+            console.log({ title, image, content, category });
+
+            if(!title|| !image || !category || !content){
+                return toastr.info('Vui lòng nhập đây đủ!')
+            } else{
+                $.ajax({
+                    url: `/blog/add`,
+                    method: 'POST',
+                    data: { title, image, content, category },
+                    success: resp => {
+                        console.log({ resp })
+                        if(!resp.error){
+                            toastr['success']('Thêm bài viết thành công', 'Thông báo');
+                            setTimeout(() => {
+                                location.href = `/dashboard`
+                            }, 500);
+                        }else{
+                            return toastr['error']('Thêm bài viết thất bại', 'Thông báo');
+                        }
+                    },
+                    error: err => console.log({ err })
+                });
+            }
+        })
+    })
+    
+</script>
+        
+        

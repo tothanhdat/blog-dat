@@ -3,11 +3,13 @@ const moment            = require('moment')
 const BLOG_MODEL        = require('../models/blog.js');
 const { CATEGORY }      = require('../constants/config');
 
+const { renderToView }  = require('../utils/childRouting');
+
 /**
  * Thêm bài viết
  */
 route.get('/add', async (req, res) => {
-    res.render('pages/add-blog.ejs')
+    renderToView(req, res, 'dashboard/add-post.ejs', {})
 })
 
 route.post('/add', async (req, res) => {
@@ -22,7 +24,8 @@ route.post('/add', async (req, res) => {
 route.get('/update/:blogID', async (req, res) => {
     let { blogID } = req.params;
     let infoBlog = await BLOG_MODEL.getInfo({ blogID });
-    res.render('pages/update-blog.ejs', { infoBlog: infoBlog.data, blogID })
+    renderToView(req, res, 'dashboard/update-post.ejs', {infoBlog: infoBlog.data, blogID})
+
 })
 
 route.post('/update/:blogID', async (req, res) => {
@@ -51,8 +54,14 @@ route.get('/:blogID', async (req, res) => {
 
 route.get('/info/:blogID', async (req, res) => {
     let { blogID } = req.params;
-    let infoBlog = await BLOG_MODEL.getInfo({ blogID })
+    let infoBlog = await BLOG_MODEL.getInfo({ blogID });
     res.json(infoBlog)
+})
+
+route.get('/remove/:blogID', async (req, res) => {
+    let { blogID } = req.params;
+    await BLOG_MODEL.remove({ blogID })
+    res.redirect('/dashboard');
 })
 
 module.exports = route;

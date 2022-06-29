@@ -13,8 +13,6 @@ module.exports = class BLOG extends BLOG_COLL {
                 let infoAfterInsert = new BLOG({ title, content, image, category });
                 let saveDataInsert = await infoAfterInsert.save();
 
-                console.log({ saveDataInsert });
-
                 if (!saveDataInsert) return resolve({ error: true, message: 'cannot_insert' });
                 resolve({ error: false, data: infoAfterInsert });
 
@@ -63,6 +61,22 @@ module.exports = class BLOG extends BLOG_COLL {
         })
     }
 
+    static countViews({}) {
+        return new Promise(async resolve => {
+            try {
+                let totalViews = await BLOG_COLL.aggregate([
+                    { $group: { _id: null, views: { $sum: "$views" } } }
+                ])
+
+                return resolve({ error: false, data: totalViews[0].views });
+
+            } catch (error) {
+
+                return resolve({ error: true, message: error.message });
+            }
+        })
+    }
+
     static getInfo({ blogID, views }) {
         return new Promise(async resolve => {
             try {
@@ -97,7 +111,6 @@ module.exports = class BLOG extends BLOG_COLL {
                     return resolve({ error: true, message: 'params_invalid' });
 
                 let infoUpdate = await BLOG_COLL.findByIdAndUpdate(blogID, { title, content, image, category }, {new: true})
-                console.log({ infoUpdate });
 
                 if (!infoUpdate) return resolve({ error: true, message: 'cannot_update' });
                 resolve({ error: false, data: infoUpdate });

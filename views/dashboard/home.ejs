@@ -1,0 +1,254 @@
+<% moment.locale('vi')%>
+<%- include ('./header.ejs') %>
+<%- include ('./sidebar.ejs') %>
+           
+            <!-- ============================================================== -->
+            <!-- Start right Content here -->
+            <!-- ============================================================== -->
+            <div class="main-content">
+
+                <div class="page-content">
+                    <div class="container-fluid">
+
+                        <!-- start page title -->
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="page-title-box d-sm-flex align-items-center justify-content-between">
+                                    <h4 class="mb-sm-0 font-size-18">Trang chủ</h4>
+
+                                    <div class="page-title-right">
+                                        <ol class="breadcrumb m-0">
+                                            <li class="breadcrumb-item"><a href="javascript: void(0);">Dashboard</a></li>
+                                            <li class="breadcrumb-item active">Dashboard</li>
+                                        </ol>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <!-- end page title -->
+
+                        <div class="row">
+                            <div class="col-xl-3 col-md-6">
+                                <!-- card -->
+                                <div class="card card-h-100">
+                                    <!-- card body -->
+                                    <div class="card-body">
+                                        <div class="row align-items-center">
+                                            <div class="col-6">
+                                                <span class="text-muted mb-3 lh-1 d-block text-truncate">Tổng số bài viết</span>
+                                                <h4 class="mb-3">
+                                                    <span class="counter-value" data-target="<%=totalBlog%>"></span> bài
+                                                </h4>
+                                            </div>
+
+                                            <div class="col-6">
+                                                <div id="mini-chart1" data-colors="["#5156be"]" class="apex-charts mb-2"></div>
+                                            </div>
+                                        </div>
+                                        <div class="text-nowrap">
+                                            <span class="badge bg-soft-success text-success">+1</span>
+                                            <span class="ms-1 text-muted font-size-13">So với tuần trước</span>
+                                        </div>
+                                    </div><!-- end card body -->
+                                </div><!-- end card -->
+                            </div><!-- end col -->
+        
+                            <div class="col-xl-3 col-md-6">
+                                <!-- card -->
+                                <div class="card card-h-100">
+                                    <!-- card body -->
+                                    <div class="card-body">
+                                        <div class="row align-items-center">
+                                            <div class="col-6">
+                                                <span class="text-muted mb-3 lh-1 d-block text-truncate">Tổng lượt xem</span>
+                                                <h4 class="mb-3">
+                                                    <span class="counter-value" data-target="<%=totalViews%>">0</span>
+                                                </h4>
+                                            </div>
+                                            <div class="col-6">
+                                                <div id="mini-chart2" data-colors="["#5156be"]" class="apex-charts mb-2"></div>
+                                            </div>
+                                        </div>
+                                        <div class="text-nowrap">
+                                            <span class="badge bg-soft-success text-success">+320 lượt xem</span>
+                                            <span class="ms-1 text-muted font-size-13">So với tuần trước</span>
+                                        </div>
+                                    </div><!-- end card body -->
+                                </div><!-- end card -->
+                            </div><!-- end col-->
+        
+                            <div class="col-xl-3 col-md-6">
+                                <!-- card -->
+                                <div class="card card-h-100">
+                                    <!-- card body -->
+                                    <div class="card-body">
+                                        <div class="row align-items-center">
+                                            <div class="col-6">
+                                                <span class="text-muted mb-3 lh-1 d-block text-truncate">User</span>
+                                                <h4 class="mb-3">
+                                                    <span class="counter-value" data-target="4"></span> user
+                                                </h4>
+                                            </div>
+                                            <div class="col-6">
+                                                <div id="mini-chart3" data-colors="["#5156be"]" class="apex-charts mb-2"></div>
+                                            </div>
+                                        </div>
+                                        <div class="text-nowrap">
+                                            <span class="badge bg-soft-success text-success">+ $2.8k</span>
+                                            <span class="ms-1 text-muted font-size-13">Since last week</span>
+                                        </div>
+                                    </div><!-- end card body -->
+                                </div><!-- end card -->
+                            </div><!-- end col -->
+        
+                            <div class="col-xl-3 col-md-6">
+                                <!-- card -->
+                                <div class="card card-h-100">
+                                    <!-- card body -->
+                                    <div class="card-body">
+                                        <div class="row align-items-center">
+                                            <div class="col-6">
+                                                <span class="text-muted mb-3 lh-1 d-block text-truncate">Profit Ration</span>
+                                                <h4 class="mb-3">
+                                                    <span class="counter-value" data-target="12.57">0</span>%
+                                                </h4>
+                                            </div>
+                                            <div class="col-6">
+                                                <div id="mini-chart4" data-colors="["#5156be"]" class="apex-charts mb-2"></div>
+                                            </div>
+                                        </div>
+                                        <div class="text-nowrap">
+                                            <span class="badge bg-soft-success text-success">+2.95%</span>
+                                            <span class="ms-1 text-muted font-size-13">Since last week</span>
+                                        </div>
+                                    </div><!-- end card body -->
+                                </div><!-- end card -->
+                            </div><!-- end col -->    
+                        </div><!-- end row-->
+                        <div class="row">
+                            <div class="col-xl-12">
+                                <div class="card">
+                                    <div class="card-header align-items-center d-flex">
+                                        <h4 class="card-title mb-0 flex-grow-1">Bài viết gần đây</h4>
+                                        <div class="flex-shrink-0">
+                                            <a href="/blog/add" type="submit" class="btn btn-success">+ Tạo mới</a>
+                                        </div>
+                                    </div><!-- end card header -->
+
+                                    <div class="card-body">
+        
+                                        <table id="datatable" class="table table-bordered dt-responsive  nowrap w-100">
+                                            <thead>
+                                            <tr>
+                                                <th>STT</th>
+                                                <th>Tên bài viết</th>
+                                                <th>Danh mục</th>
+                                                <th>Lượt xem</th>
+                                                <th>Người viết</th>
+                                                <th>Ngày tạo</th>
+                                                <th>Tác vụ</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                                <% if (listBlog && listBlog.length) { %>
+                                                    <% listBlog.forEach((blog, index) => { %>
+                                                        <tr>
+                                                            <td><%=index+1 %></td>
+                                                            <td><a href="/blog/<%=blog._id%>" target="_blank"><%=blog.title %></a></td>
+                                                            <% CATEGORY.forEach(category => { %>
+                                                                <% if (category.id == blog.category) { %>
+                                                                      <td><%=category.title %></td>
+                                                                <% } %>
+                                                            <% }) %>
+                                                            <td><%=blog.views %></td>
+                                                            <td>Admin</td>
+                                                            <td><%=moment(blog.createAt).format('L'); %></td>
+                                                            <td>
+                                                                <!-- <a href="/blog/remove/<%=blog._id%>" class="btn btn-outline-secondary btn-sm btnRemove" title="Xóa">
+                                                                    <i class="fas fa-trash-alt"></i>
+                                                                </a> -->
+                                                                <a href="/blog/update/<%=blog._id%>" style="margin-left: 10px;" class="btn btn-outline-secondary btn-sm btnEdit" title="Chỉnh sửa">
+                                                                    <i class="fas fa-pencil-alt"></i>
+                                                                </a>
+                                                            </td>
+                                                        </tr>
+                                                    <% }) %>
+                                                <% }else{%>
+
+                                                <% } %>
+                                            </tbody>
+                                        </table>
+        
+                                    </div>
+
+                                    <!-- end card body -->
+                                </div>
+                                <!-- end card -->
+                            </div>
+                            <!-- end col -->
+                        </div><!-- end row -->
+                        <div class="row">
+                            <div class="col-xl-6">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h4 class="card-title">Ratio video 16:9</h4>
+                                        <p class="card-title-desc">Vừa học vừa nghe nhạc thích lắm ạ. Khá thư giãn.</p>
+                                    </div><!-- end card header -->
+
+                                    <div class="card-body">
+                                        <!-- 16:9 aspect ratio -->
+                                        <div class="ratio ratio-16x9">
+                                            <iframe src="https://www.youtube.com/embed/syvz6eOcSv0" title="YouTube video" allowfullscreen=""></iframe>
+                                        </div>
+                                    </div><!-- end card-body -->
+                                </div><!-- end card -->
+                            </div><!-- end col -->
+
+                            <div class="col-xl-6">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h4 class="card-title">11 bài hát lofi tâm trạng cho buổi tối</h4>
+                                        <p class="card-title-desc">Vừa học vừa nghe nhạc thích lắm ạ. Khá thư giãn.</p>
+                                    </div><!-- end card header -->
+
+                                    <div class="card-body">
+                                        <!-- 21:9 aspect ratio -->
+                                        <div class="ratio ratio-21x9">
+                                            <iframe src="https://www.youtube.com/embed/hN_WYq1kVtM" title="YouTube video" allowfullscreen=""></iframe>
+                                        </div>
+
+                                    </div><!-- end card-body -->
+                                </div><!-- end card -->
+                            </div><!-- end col -->
+
+                        </div>
+                    </div>
+                    <!-- container-fluid -->
+                </div>
+                <!-- End Page-content -->
+
+
+                <footer class="footer">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <script>document.write(new Date().getFullYear())</script> © Minia.
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="text-sm-end d-none d-sm-block">
+                                    Design & Develop by <a href="#!" class="text-decoration-underline">Themesbrand</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </footer>
+            </div>
+            <!-- end main content-->
+
+        </div>
+        <!-- END layout-wrapper -->
+
+<%- include ('./footer.ejs') %>
+        
+        
