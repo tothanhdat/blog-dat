@@ -37,9 +37,8 @@ app.get('/about-me', async (req, res) => {
 const PORT = process.env.PORT || 3000;
 
 const uri = 'mongodb://localhost/blogtodat';
-const uri_cloud = 'mongodb+srv://tothanhdat:Tothanhdat123@cluster0.dxjtsoc.mongodb.net/blogtodat?retryWrites=true&w=majority'
 
-mongoose.connect(uri_cloud, { useNewUrlParser: true });
+mongoose.connect(process.env.DATABASE, { useNewUrlParser: true });
 mongoose.connection.once('open', () => {
     app.listen(PORT, () => console.log(`Server started at PORT ${PORT}`));
 });
