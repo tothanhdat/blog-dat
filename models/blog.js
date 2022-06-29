@@ -30,9 +30,9 @@ module.exports = class BLOG extends BLOG_COLL {
                 let listBlog;
                 
                 if(categoryID){
-                    listBlog = await BLOG.find({category: categoryID});
+                    listBlog = await BLOG.find({category: categoryID, status: 1});
                 }else{
-                    listBlog = await BLOG.find();
+                    listBlog = await BLOG.find({ status: 1 });
                 }
 
                 if (!listBlog) return resolve({ error: true, message: 'cannot_get_list' });
@@ -50,7 +50,7 @@ module.exports = class BLOG extends BLOG_COLL {
         return new Promise(async resolve => {
             try {
                 
-                let listBlogTrending = await BLOG.find().sort({ views: -1 });
+                let listBlogTrending = await BLOG.find({status: 1}).sort({ views: -1 });
 
                 if (!listBlogTrending) return resolve({ error: true, message: 'cannot_get_list' });
 

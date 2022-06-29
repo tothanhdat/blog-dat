@@ -22,7 +22,7 @@ route.post('/add', async (req, res) => {
 route.get('/update/:blogID', async (req, res) => {
     let { blogID } = req.params;
     let infoBlog = await BLOG_MODEL.getInfo({ blogID });
-    res.render('pages/update-blog.ejs', { infoBlog: infoBlog.data, blogID: infoBlog.data._id })
+    res.render('pages/update-blog.ejs', { infoBlog: infoBlog.data, blogID })
 })
 
 route.post('/update/:blogID', async (req, res) => {

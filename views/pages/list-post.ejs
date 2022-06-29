@@ -9,39 +9,44 @@
               <!-- BLOG LIST -->
               <div class="blog-bold waterfall blog-stream">
                   <!-- post -->
-                  <% listBlog && listBlog.length && listBlog.forEach(blog => {%> 
-                    <article class="hentry has-post-thumbnail slideUp">
-                      <div class="post-thumbnail" style="background-image:url(<%=blog.image%>)">
-                          <header class="entry-header">
-                              <div class="entry-meta">
-                                  <span class="cat-links">
-                                      <a href="#" title="View all posts in Life" rel="category tag">
-                                        <% CATEGORY.forEach(category => { %>
-                                            <% if (category.id == blog.category) { %>
-                                                  <%=category.title%> 
-                                            <% } %>
-                                        <% }) %>
-                                      </a>
-                                  </span>	
-                              </div>
-                              
-                              <h2 class="entry-title"><a href="/blog/<%=blog._id%>"><%=blog.title %> </a></h2>
-                          
-                              <div class="entry-meta">
-                                  <span class="entry-date">
-                                      <time class="entry-date" datetime="2014-07-13T04:34:10+00:00"><%=moment(blog.createAt).format('LL'); %></time>
-                                  </span> 
-                                  <span class="comment-link">
-                                      <a href="#comments"><%=blog.views%> Lượt xem</a>
-                                  </span>
-                              </div>
-                              
-                              <p><a href="/blog/<%=blog._id%>" class="more-link">Xem bài viết</a></p>
-                          </header>
-                      </div>
-                  </article>
-                  <%})%> 
-                  
+                  <% if (listBlog && listBlog.length) { %>
+                    <%listBlog.forEach(blog => {%> 
+                      <article class="hentry has-post-thumbnail slideUp">
+                        <div class="post-thumbnail" style="background-image:url(<%=blog.image%>)">
+                            <header class="entry-header">
+                                <div class="entry-meta">
+                                    <span class="cat-links">
+                                        <a href="#" title="View all posts in Life" rel="category tag">
+                                          <% CATEGORY.forEach(category => { %>
+                                              <% if (category.id == blog.category) { %>
+                                                    <%=category.title%> 
+                                              <% } %>
+                                          <% }) %>
+                                        </a>
+                                    </span>	
+                                </div>
+                                
+                                <h2 class="entry-title"><a href="/blog/<%=blog._id%>"><%=blog.title %> </a></h2>
+                            
+                                <div class="entry-meta">
+                                    <span class="entry-date">
+                                        <time class="entry-date" datetime="2014-07-13T04:34:10+00:00"><%=moment(blog.createAt).format('LL'); %></time>
+                                    </span> 
+                                    <span class="comment-link">
+                                        <a href="#comments"><%=blog.views%> Lượt xem</a>
+                                    </span>
+                                </div>
+                                
+                                <p><a href="/blog/<%=blog._id%>" class="more-link">Xem bài viết</a></p>
+                            </header>
+                        </div>
+                    </article>
+                    <%})%> 
+                  <% }else{%>
+                    <div style="text-align: center;">
+                      <p style="font-size: large;">Sorry!! Không tìm thấy bài viết nào</p>
+                    </div>
+                  <% } %>
               </div>
             <!-- BLOG BOLD --> 
               
@@ -106,18 +111,24 @@
               <h3 class="widget-title">Trending Posts</h3>
               <div class="tptn_posts tptn_posts_widget">
                   <ul>
-                    <% listBlogTrending && listBlogTrending.length && listBlogTrending.forEach(blog => { %>
+                    <% if (listBlogTrending && listBlogTrending.length) { %>
+                        <% listBlogTrending.forEach(blog => { %>
+                          <li>
+                            <a href="#" class="tptn_link">
+                                <img style="max-width: 20%" src="<%=blog.image%>" alt="post-image" class="tptn_thumb">
+                            </a>
+                              <span class="tptn_after_thumb">
+                                  <a href="#" class="tptn_link"><span class="tptn_title"><%=blog.title%></span></a>
+                                  <!--<span class="tptn_author"> by <a href="#">Johnny Doe</a></span>-->
+                                  <span class="tptn_date"> <%=moment(blog.createAt).format('L'); %></span> 
+                              </span>
+                          </li>
+                        <% }) %>
+                    <% }else {%>
                       <li>
-                        <a href="#" class="tptn_link">
-                            <img style="max-width: 20%" src="<%=blog.image%>" alt="post-image" class="tptn_thumb">
-                        </a>
-                          <span class="tptn_after_thumb">
-                              <a href="#" class="tptn_link"><span class="tptn_title"><%=blog.title%></span></a>
-                              <!--<span class="tptn_author"> by <a href="#">Johnny Doe</a></span>-->
-                              <span class="tptn_date"> <%=moment(blog.createAt).format('L'); %></span> 
-                          </span>
+                        <p>Không có bài viết nào</p>
                       </li>
-                    <% }) %>
+                    <% } %>
                   </ul>
               </div>
           </aside>

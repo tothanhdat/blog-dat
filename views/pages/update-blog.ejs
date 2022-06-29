@@ -71,6 +71,8 @@
             method: 'GET',
             success: resp => {
                 let infoBlog = resp.data;
+                console.log({ resp });
+                console.log({ infoBlog });
                 if(!resp.error){
                     CKEDITOR.instances['editor'].setData(infoBlog.content);
                 }else{
