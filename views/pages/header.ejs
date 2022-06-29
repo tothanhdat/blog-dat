@@ -65,7 +65,7 @@
 
 </head>
 
-<body class="  ">
+<body class="">
 
     <!-- page -->
     <div id="page" class="hfeed site">
@@ -172,3 +172,26 @@
             </nav>
         
         </header>
+
+        <!-- <script type="text/javascript">
+
+            console.log({ blogID });
+            $.ajax({
+                url: `/blog/info/${blogID}`,
+                method: 'GET',
+                success: resp => {
+                    let infoBlog = resp.data;
+                    console.log({ resp });
+                    console.log({ infoBlog });
+                    if(!resp.error){
+                        CKEDITOR.instances['editor'].setData(infoBlog.content);
+                    }else{
+                        return toastr['error']('Thêm thất bại', 'Thông báo');
+                    }
+                },
+                error: err => console.log({ err })
+            });
+            $(document).ready(function() {
+                $("head").append(`<meta property="og:url"content="https://tothanhdat.online/"/><meta property="og:type"content="article" /><meta property="og:title"content="Blog của Đạt" /><meta property="og:description"content="Chúc bạn có trải nghiệm vui vẻ 😊" /><meta property="og:image"content="https://tothanhdat.online/template/images/site/avatar_main_square.jpg"/>`);
+            });
+        </script> -->
