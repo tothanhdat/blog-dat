@@ -7,10 +7,10 @@
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="title" content="Blog của Đạt">
+    <!-- <meta name="title" content="Blog của Đạt">
     <meta name="description" content="Chúc bạn có trải nghiệm vui vẻ nhé!!">
     <meta name="keywords" content="blog itba, itba, blog lap trinh">
-    <meta name="author" content="Pixelwars">
+    <meta name="author" content="Pixelwars"> -->
 
     <!-- <meta property="og:url"                content="https://tothanhdat.online/" />
     <meta property="og:type"               content="article" />
@@ -296,7 +296,7 @@
                 let infoBlog = resp.data;
                 console.log({ infoBlog });
                 if(!resp.error){
-                    $("head").append(`<meta property="og:url"content="https://tothanhdat.online/blog/${blogID}"/><meta property="og:type"content="article" /><meta property="og:title"content="${infoBlog.title}" /><meta property="og:description"content="Chúc bạn có trải nghiệm vui vẻ 😊" /><meta property="og:image"content="${infoBlog.image}"/>`);
+                    $("head").prepend(`<meta property="og:url"content="https://tothanhdat.online/blog/${blogID}"/><meta property="og:type"content="article" /><meta property="og:title"content="${infoBlog.title}" /><meta property="og:description"content="Chúc bạn có trải nghiệm vui vẻ 😊" /><meta property="og:image"content="${infoBlog.image}"/>`);
                     $('.content-ckeditor').append(infoBlog.content)
                 }else{
                     return toastr['error']('Thêm thất bại', 'Thông báo');
