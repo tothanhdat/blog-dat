@@ -18,7 +18,7 @@ module.exports = class user {
                 let infoUser = await newUser.save();
 
                 if (!infoUser) return resolve({ error: true, message: 'Bị lỗi trong quá trình đăng ký' });
-                resolve({ error: false, infoUser });
+                resolve({ error: false, data: infoUser });
 
             } catch (error) {
                 return resolve({ error: true, message: error.message });

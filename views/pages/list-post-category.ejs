@@ -55,15 +55,20 @@
                   <% } %>
               </div>
             <!-- BLOG BOLD --> 
-              
+
               <!-- post pagination -->
               <% if (pages > 0) { %>
                 <nav class="post-pagination">
                   <ul class="pagination">
-                    <% console.log(current) %> 
-                    <% if (current == 1 || current == undefined) { %>
+                    
+                    <% if(!current){%> 
+                      <% current = 1 %>
+                    <%} %> 
+                    <!-- Nếu thông số http://localhost:3000/1/ là 1 thì First sẽ bị disabled -->
+                    <% if (current == 1) { %>
                       <li class="pagination-first disabled"><a href="#"> First </a></li>
                     <% }else{%>
+                    <!-- Nếu thông số http://localhost:3333/2/ từ 2 trở lên thì First sẽ bỏ disabled -->
                       <li class="pagination-first"><a href="#"> First </a></li>
                     <% } %>
 
@@ -75,20 +80,20 @@
 
                     <% for(; i <= (Number(current) + 2) && i <= pages; i++) { %>
                       <% if(i == current) { %>
-                        <li class="pagination-num current"><a href="?page=<%= i %>"><%= i %></a></li>
+                        <li class="pagination-num current"><a href="/category/type/<%=categoryID%>?page=<%= i %>"><%= i %></a></li>
                       <% } else { %>
-                        <li class="pagination-num"><a href="?page=<%= i %>"><%= i %></a></li>
+                        <li class="pagination-num"><a href="/category/type/<%=categoryID%>?page=<%= i %>"><%= i %></a></li>
                       <% } %>
                       <% if (i == Number(current) + 2 && i < pages) { %>
-                          <li class="pagination-num disabled"><a href="?page=<%= i %>">...</a></li>
+                          <li class="pagination-num disabled"><a href="/category/type/<%=categoryID%>?page=<%= i %>">...</a></li>
                       <% } %>
                     <% } %>
 
                     <% if(current == pages) { %> 
                           <li class="pagination-last disabled"><a href="#"> Last </a> </li>
                       <% } else { %>
-                          <li class="page-item">
-                            <a class="page-link" href="/category?page=<%= pages %>">
+                          <li class="pagination-num">
+                            <a href="/category/type/<%=categoryID%>?page=<%= pages %>">
                               Last
                             </a>
                           </li>

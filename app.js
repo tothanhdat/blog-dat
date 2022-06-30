@@ -7,12 +7,10 @@ const expressSession    = require('express-session');
 
 const { renderToView }  = require('./utils/childRouting');
 const checkActive       = require('./utils/checkActive');
-const BLOG_MODEL        = require('./models/blog');
 
 const BLOG_ROUTER       = require('./routes/blog');
 const CATEGORY_ROUTER   = require('./routes/category');
 const USER_ROUTER       = require('./routes/user');
-const { CATEGORY }      = require('./constants/config');
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
@@ -45,9 +43,20 @@ app.get('/login', async (req, res) => {
     renderToView(req, res, 'dashboard/login.ejs', {})
 });
 
+//LOGIN
+app.get('/admin', async (req, res) => {
+    res.redirect('/login');
+});
+
 //DASHBOARD
 app.get('/dashboard', checkActive, async (req, res) => {
     renderToView(req, res, 'dashboard/home.ejs', {})
+});
+
+//LOGOUT
+app.get('/logout', function(req, res){
+    req.session.destroy();
+    res.redirect('/login');
 });
 
 const PORT = process.env.PORT || 3000;

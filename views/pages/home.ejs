@@ -24,7 +24,7 @@
                                 </figure>        
                                 <% CATEGORY.forEach(category => { %>
                                     <figure>
-                                        <a href="/category?categoryID=<%=category.id%>"><img src="<%=category.image%>" alt="About Me"></a>
+                                        <a href="/category/type/<%=category.id%>"><img src="<%=category.image%>" alt="About Me"></a>
                                         <figcaption class="wp-caption-text"><%=category.title %></figcaption>
                                     </figure> 
                                 <% }) %>
@@ -33,10 +33,10 @@
                                     
                          </article> 
                                  
-                       <h3 class="widget-title home-title">LATEST FROM THE BLOG</h3>  
+                       <h3 class="widget-title home-title">Bài viết gần đây</h3>  
                          
                        <div class="blog-simple">
-                            <% listBlog && listBlog.length && listBlog.forEach(blog => { %>
+                            <% listBlog && listBlog.length && listBlog.slice(0, 5).forEach(blog => { %>
                              
                             <article class="hentry post has-post-thumbnail">
                                 <div class="hentry-left">

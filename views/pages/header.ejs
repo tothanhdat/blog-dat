@@ -72,34 +72,14 @@
                     <!-- nav-menu -->
                     <div class="nav-menu">
                         <ul>
-                            <li><a href="/">HOME</a>
+                            <li><a href="/">TRANG CHỦ</a>
                                 <!-- level 2 -->
                             </li>
                             
                             <li><a href="/about-me">ABOUT ME</a></li>
 
-                            <% 
-                                const CATEGORY = [
-                                    {
-                                        id: 1,
-                                        title: "Life",
-                                        image: "https://imgur.com/jJ5fEDg.jpg"
-                                    },
-                                    {
-                                        id: 2,
-                                        title: "Travel",
-                                        image: "https://imgur.com/ICqNK8y.jpg"
-                                    },
-                                    {
-                                        id: 3,
-                                        title: "BA Sharing",
-                                        image: "https://imgur.com/W7sh9w6.jpg"
-                                    },
-                                ]
-                            %>
-
                             <% CATEGORY.forEach(category => { %>
-                                <li><a href="/category?categoryID=<%=category.id%>"><%=category.title %> </a></li>
+                                <li><a href="/category/type/<%=category.id%>"><%=category.title %> </a></li>
                             <% }) %>
 
                         </ul>
@@ -125,7 +105,6 @@
                     
                     <!-- social-container -->
                     <div class="social-container">
-                        
                         <a class="social-link facebook" href="https://www.facebook.com/TOTHANHDAT.TTD/"></a>
                         <a class="social-link linkedin" href="https://www.linkedin.com/in/tothanhdat/"></a>
                         <a class="social-link github" href="https://github.com/tothanhdat"></a>
