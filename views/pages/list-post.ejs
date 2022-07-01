@@ -49,8 +49,9 @@
                     </article>
                     <%})%> 
                   <% }else{%>
-                    <div style="text-align: center;">
-                      <p style="font-size: large;">Sorry!! Không tìm thấy bài viết nào</p>
+                    <div style="text-align: center; padding-top: 40px;">
+                      <img src="/template/images/site/not_found.png" alt="post-image" class="tptn_thumb">
+                      <p style="font-size: large; color: rgb(82, 82, 82);">Sorry!! Không tìm thấy bài viết nào</p>
                     </div>
                   <% } %>
               </div>
@@ -60,8 +61,10 @@
               <% if (pages > 0) { %>
                 <nav class="post-pagination">
                   <ul class="pagination">
-                    <% console.log(current) %> 
-                    <% if (current == 1 || current == undefined) { %>
+                    <% if(!current){%> 
+                      <% current = 1 %>
+                    <%} %> 
+                    <% if (current == 1) { %>
                       <li class="pagination-first disabled"><a href="#"> First </a></li>
                     <% }else{%>
                       <li class="pagination-first"><a href="#"> First </a></li>
@@ -105,7 +108,7 @@
           <aside class="widget widget_text">
             <h3 class="widget-title">About Me</h3>
             <div class="textwidget">
-              <p><img src="/template/images/site/avatar_main_square.jpg" alt="avatar"></p>
+              <p style=""><img style="border-radius: 5%;" src="/template/images/site/avatar_main_square.jpg" alt="avatar"></p>
               <p>Xin chào! Mình là Đạt đây, hiện tại mình là một ITBA. </p>
               <p>Đây là blog nhằm chia sẻ các câu chuyện trong cuộc sống của mình cũng như chia sẻ các kiến thức bổ ích về lập trình và BA mà mình tích lũy được.</p>
             </div>
@@ -128,11 +131,11 @@
           
           <!-- styles for plugin : https://wordpress.org/plugins/top-10 -->
           <aside class="widget widget_widget_tptn_pop">
-              <h3 class="widget-title">Trending Posts</h3>
+              <h3 class="widget-title">Bài viết nổi bật</h3>
               <div class="tptn_posts tptn_posts_widget">
                   <ul>
                     <% if (listBlogTrending && listBlogTrending.length) { %>
-                        <% listBlogTrending.forEach(blog => { %>
+                        <% listBlogTrending.slice(0, 5).forEach(blog => { %>
                           <li>
                             <a href="#" class="tptn_link">
                                 <img style="max-width: 20%" src="<%=blog.image%>" alt="post-image" class="tptn_thumb">

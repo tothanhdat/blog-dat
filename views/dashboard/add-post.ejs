@@ -118,8 +118,6 @@
             let category 	= $('#category').val().trim();
             let content 	= CKEDITOR.instances['editor'].getData();
 
-            console.log({ title, image, content, category });
-
             if(!title|| !image || !category || !content){
                 return toastr.info('Vui lòng nhập đây đủ!')
             } else{

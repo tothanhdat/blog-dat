@@ -121,8 +121,6 @@
             method: 'GET',
             success: resp => {
                 let infoBlog = resp.data;
-                console.log({ resp });
-                console.log({ infoBlog });
                 if(!resp.error){
                     CKEDITOR.instances['editor'].setData(infoBlog.content);
                 }else{
@@ -141,8 +139,6 @@
             let image 	    = $('#image').val().trim();
             let category 	= $('#category').val().trim();
             let content 	= CKEDITOR.instances['editor'].getData();
-
-            console.log({ title, image, content, category });
 
             if(!title|| !image || !category){
                 return toastr.info('Vui lòng nhập đủ!')

@@ -49,8 +49,9 @@
                     </article>
                     <%})%> 
                   <% }else{%>
-                    <div style="text-align: center;">
-                      <p style="font-size: large;">Sorry!! Không tìm thấy bài viết nào</p>
+                    <div style="text-align: center; padding-top: 40px;">
+                      <img src="/template/images/site/not_found.png" alt="post-image" class="tptn_thumb">
+                      <p style="font-size: large; color: rgb(82, 82, 82);">Sorry!! Không tìm thấy bài viết nào</p>
                     </div>
                   <% } %>
               </div>
@@ -133,7 +134,7 @@
           
           <!-- styles for plugin : https://wordpress.org/plugins/top-10 -->
           <aside class="widget widget_widget_tptn_pop">
-              <h3 class="widget-title">Trending Posts</h3>
+              <h3 class="widget-title">Bài viết nổi bật</h3>
               <div class="tptn_posts tptn_posts_widget">
                   <ul>
                     <% if (listBlogTrending && listBlogTrending.length) { %>
