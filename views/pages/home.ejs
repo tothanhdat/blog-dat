@@ -77,10 +77,9 @@
                                     
                                     <!-- .entry-content -->
                                     <div class="entry-content">
-                                                                        
-                                        <p>All I've got to do is pass as an ordinary human being. Simple. What could possibly go wrong? Stop talking, brain thinking. Hush. I hate yogurt. It's just stuff with bits in. I'm nobody's taxi..
+                                        <p><%=blog.shortDesc ? blog.shortDesc.slice(0, 190).concat('...') : `Ở đây sẽ hiện short description Ở đây sẽ hiện short description Ở đây sẽ hiện short description Ở đây sẽ hiện short description Ở đây sẽ hiện short description...` %> 
                                             <span class="more">
-                                                <a href="blog-single.html" class="more-link">Read More</a>
+                                                <a href="/blog/<%=blog._id %>" class="more-link">Đọc thêm</a>
                                             </span>
                                         </p>
                                     

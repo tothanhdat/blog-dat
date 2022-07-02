@@ -13,8 +13,8 @@ route.get('/add', async (req, res) => {
 })
 
 route.post('/add', async (req, res) => {
-    let { title, content, image, category } = req.body;
-    let infoBlog = await BLOG_MODEL.insert({ title, content, image, category })
+    let { title, content, image, category, shortDesc } = req.body;
+    let infoBlog = await BLOG_MODEL.insert({ title, content, image, category, shortDesc })
     res.json(infoBlog)
 })
 
@@ -30,15 +30,11 @@ route.get('/update/:blogID', async (req, res) => {
 
 route.post('/update/:blogID', async (req, res) => {
     let { blogID } = req.params;
-    let { title, content, image, category } = req.body;
-    let infoBlog = await BLOG_MODEL.update({ blogID, title, content, image, category })
+    let { title, content, image, category, shortDesc } = req.body;
+    let infoBlog = await BLOG_MODEL.update({ blogID, title, content, image, category, shortDesc })
     res.json(infoBlog)
 })
 
-// route.get('/list', async (req, res) => {
-//     let listBlog = await BLOG_MODEL.getList()
-//     res.json(listBlog)
-// })
 
 route.get('/list-post-trending', async (req, res) => {
     let listBlogTrending = await BLOG_MODEL.getListTrending();

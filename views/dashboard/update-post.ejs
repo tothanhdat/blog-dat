@@ -25,6 +25,10 @@
                                                         <input class="form-control" type="text" value="<%=infoBlog.title%>" id="title">
                                                     </div>
                                                     <div class="mb-3">
+                                                        <label for="example-text-input" class="form-label">Mô tả ngắn</label>
+                                                        <textarea id="basicpill-address-input" class="form-control shortDesc" rows="3" placeholder="Viết gì đó"><%=infoBlog.shortDesc || ''%></textarea>
+                                                    </div>
+                                                    <div class="mb-3">
                                                         <label class="form-label">Danh mục</label>
                                                         <select class="form-select" id="category">
                                                             <% CATEGORY.forEach(category => { %>
@@ -121,6 +125,7 @@
             method: 'GET',
             success: resp => {
                 let infoBlog = resp.data;
+                console.log({ infoBlog });
                 if(!resp.error){
                     CKEDITOR.instances['editor'].setData(infoBlog.content);
                 }else{
@@ -136,6 +141,7 @@
             let blogID = `<%=blogID%>`;
 
             let title       = $('#title').val().trim();
+            let shortDesc 	= $('.shortDesc').val().trim();
             let image 	    = $('#image').val().trim();
             let category 	= $('#category').val().trim();
             let content 	= CKEDITOR.instances['editor'].getData();
@@ -146,7 +152,7 @@
                 $.ajax({
                     url: `/blog/update/${blogID}`,
                     method: 'POST',
-                    data: { title, image, content, category },
+                    data: { title, image, content, category, shortDesc },
                     success: resp => {
                         console.log({ resp })
                         if(!resp.error){

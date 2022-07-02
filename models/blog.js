@@ -3,14 +3,14 @@ const BLOG_COLL = require('../database/blog-coll');
 
 module.exports = class BLOG extends BLOG_COLL {
 
-    static insert({ title, content, image, category }) {
+    static insert({ title, content, image, category, shortDesc }) {
         return new Promise(async resolve => {
             try {
 
-                if (!title || !content || !image || !category)
+                if (!title || !content || !image || !category || !shortDesc)
                     return resolve({ error: true, message: 'params_invalid' });
 
-                let infoAfterInsert = new BLOG({ title, content, image, category });
+                let infoAfterInsert = new BLOG({ title, content, image, category, shortDesc });
                 let saveDataInsert = await infoAfterInsert.save();
 
                 if (!saveDataInsert) return resolve({ error: true, message: 'cannot_insert' });
@@ -103,14 +103,14 @@ module.exports = class BLOG extends BLOG_COLL {
         })
     }
 
-    static update({ blogID, title, content, image, category }) {
+    static update({ blogID, title, content, image, category, shortDesc }) {
         return new Promise(async resolve => {
             try {
 
                 if (!ObjectID.isValid(blogID))
                     return resolve({ error: true, message: 'params_invalid' });
 
-                let infoUpdate = await BLOG_COLL.findByIdAndUpdate(blogID, { title, content, image, category }, {new: true})
+                let infoUpdate = await BLOG_COLL.findByIdAndUpdate(blogID, { title, content, image, category, shortDesc }, {new: true})
 
                 if (!infoUpdate) return resolve({ error: true, message: 'cannot_update' });
                 resolve({ error: false, data: infoUpdate });

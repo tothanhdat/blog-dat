@@ -22,7 +22,11 @@
                                                 <div>
                                                     <div class="mb-3">
                                                         <label for="example-text-input" class="form-label">Tiêu đề</label>
-                                                        <input class="form-control" type="text" value="" id="title">
+                                                        <input class="form-control" type="text" value="" placeholder="Blog thứ n" id="title">
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <label for="example-text-input" class="form-label">Mô tả ngắn</label>
+                                                        <textarea id="basicpill-address-input" class="form-control shortDesc" rows="3" placeholder="Viết gì đó"></textarea>
                                                     </div>
                                                     <div class="mb-3">
                                                         <label class="form-label">Danh mục</label>
@@ -115,16 +119,17 @@
 
             let title       = $('#title').val().trim();
             let image 	    = $('#image').val().trim();
+            let shortDesc 	= $('.shortDesc').val().trim();
             let category 	= $('#category').val().trim();
             let content 	= CKEDITOR.instances['editor'].getData();
 
-            if(!title|| !image || !category || !content){
+            if(!title|| !image || !category || !content || shortDesc){
                 return toastr.info('Vui lòng nhập đây đủ!')
             } else{
                 $.ajax({
                     url: `/blog/add`,
                     method: 'POST',
-                    data: { title, image, content, category },
+                    data: { title, image, content, category, shortDesc },
                     success: resp => {
                         console.log({ resp })
                         if(!resp.error){

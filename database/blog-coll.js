@@ -14,6 +14,11 @@ const blogSchema = new Schema({
     content: String,
 
     /**
+     * Nội dung ngắn
+     */
+    shortDesc: String,
+
+    /**
      * Lượt xem
      */
     views: { type: Number, default: 0 },
