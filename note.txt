@@ -1,4 +1,5 @@
 Add blog: localhost:3000/blog/add
 Update blog: localhost:3000/blog/update/id
 pkill node
-pkill node
+git fetch --all
+git reset --hard origin/master
