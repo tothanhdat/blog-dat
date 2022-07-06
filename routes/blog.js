@@ -14,11 +14,9 @@ route.get('/add', async (req, res) => {
 })
 
 route.post('/add', async (req, res) => {
-
-    let { title, content, category, shortDesc, image } = req.body;
-    console.log({ title, content, category, shortDesc, image });
-
-    let infoBlog = await BLOG_MODEL.insert({ title, content, image, category, shortDesc })
+    let { image, title, shortDesc, category, content } = req.body;
+    console.log({ image, title, shortDesc, category, content });
+    let infoBlog = await BLOG_MODEL.insert({ image, title, shortDesc, category, content })
 
     res.json(infoBlog)
 })

@@ -155,9 +155,6 @@
                             url: `/blog/add`,
                             method: 'POST',
                             data: { image: photo, title, shortDesc, category, content },
-                            enctype: 'multipart/form-data',
-                            processData: false,
-                            contentType: false,
                             success: resp => {
                                 console.log({ resp })
                                 if(!resp.error){
