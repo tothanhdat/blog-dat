@@ -16,9 +16,7 @@ route.get('/add', async (req, res) => {
 route.post('/add', async (req, res) => {
 
     let { title, content, category, shortDesc, image } = req.body;
-
-    // let infoFile = req.file;
-    // console.log({ path: infoFile.originalname });
+    console.log({ title, content, category, shortDesc, image });
 
     let infoBlog = await BLOG_MODEL.insert({ title, content, image, category, shortDesc })
 

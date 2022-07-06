@@ -146,13 +146,15 @@
                     var photo = response.data.link;
                     var photo_hash = response.data.deletehash;
 
-                    if(!title || !_imagePost || !category || !content || !shortDesc){
+                    console.log({ image: photo, title, shortDesc, category, content });
+
+                    if(!title || !photo || !category || !content || !shortDesc){
                         return toastr.info('Vui lòng nhập đây đủ!')
                     } else{
                         $.ajax({
                             url: `/blog/add`,
                             method: 'POST',
-                            data: { image: photo, title, shortDesc, category, content},
+                            data: { image: photo, title, shortDesc, category, content },
                             enctype: 'multipart/form-data',
                             processData: false,
                             contentType: false,
