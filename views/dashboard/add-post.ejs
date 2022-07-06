@@ -126,7 +126,7 @@
             let category 	= $('#category').val().trim();
             let content 	= CKEDITOR.instances['editor'].getData();
 
-		    let formData = new FormData();
+		    var formData = new FormData();
             // formData.append('title', title);
             // formData.append('shortDesc', shortDesc);
             // formData.append('category', category);
@@ -134,7 +134,7 @@
             formData.append('image', _imagePost);
 
             $.ajax({
-                url: "https://api.imgur.com/3/upload",
+                url: "https://api.imgur.com/3/image",
                 type: "POST",
                 datatype: "json",
                 headers: {
