@@ -18,7 +18,7 @@
                   <% if (products && products.length) { %>
                     <%products.forEach(blog => {%> 
                       <article class="hentry has-post-thumbnail slideUp">
-                        <div class="post-thumbnail" style="background-image:url(/template/images/<%=blog.image%>)">
+                        <div class="post-thumbnail" style="background-image:url(<%=blog.image%>)">
                             <header class="entry-header">
                                 <div class="entry-meta">
                                     <span class="cat-links">
@@ -141,7 +141,7 @@
                         <% listBlogTrending.forEach(blog => { %>
                           <li>
                             <a href="#" class="tptn_link">
-                                <img style="max-width: 20%" src="/template/images/<%=blog.image%>" alt="post-image" class="tptn_thumb">
+                                <img style="max-width: 20%" src="<%=blog.image%>" alt="post-image" class="tptn_thumb">
                             </a>
                               <span class="tptn_after_thumb">
                                   <a href="#" class="tptn_link"><span class="tptn_title"><%=blog.title%></span></a>
