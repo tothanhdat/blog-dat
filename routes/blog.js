@@ -2,6 +2,7 @@ const route             = require('express').Router();
 const moment            = require('moment')
 const BLOG_MODEL        = require('../models/blog.js');
 const { CATEGORY }      = require('../constants/config');
+const { uploadMulter }  = require('../utils/config_multer');
 
 const { renderToView }  = require('../utils/childRouting');
 
@@ -12,9 +13,14 @@ route.get('/add', async (req, res) => {
     renderToView(req, res, 'dashboard/add-post.ejs', {})
 })
 
-route.post('/add', async (req, res) => {
-    let { title, content, image, category, shortDesc } = req.body;
-    let infoBlog = await BLOG_MODEL.insert({ title, content, image, category, shortDesc })
+route.post('/add', uploadMulter.single('image'), async (req, res) => {
+
+    let { title, content, category, shortDesc } = req.body;
+
+    let infoFile = req.file;
+
+    let infoBlog = await BLOG_MODEL.insert({ title, content, image: infoFile.path, category, shortDesc })
+
     res.json(infoBlog)
 })
 

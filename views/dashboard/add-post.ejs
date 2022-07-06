@@ -38,10 +38,12 @@
                                                     </div>
                                                     <div class="mb-3">
                                                         <label for="example-email-input" class="form-label">Hình ảnh</label>
-                                                        <div>
+                                                        <input class="form-control" type="file" value="" id="image-post">
+
+                                                        <!-- <div>
                                                             <form action="#" class="dropzone">
                                                                 <div class="fallback">
-                                                                    <input name="file" type="file" multiple="multiple">
+                                                                    <input name="file" id="image-post" type="file" multiple="multiple">
                                                                 </div>
                                                                 <div class="dz-message needsclick">
                                                                     <div class="mb-3">
@@ -51,13 +53,12 @@
                                                                     <h5>Drop files here or click to upload.</h5>
                                                                 </div>
                                                             </form>
-                                                        </div>
+                                                        </div> -->
                                                     </div>
-                                                    <div class="mb-3">
+                                                    <!-- <div class="mb-3">
                                                         <label for="example-url-input" class="form-label">URL Hình ảnh (Optional)</label>
                                                         <input class="form-control" type="url" value="" id="image">
-                                                    </div>
-                                                    
+                                                    </div> -->
                                                 </div>
                                             </div>
 
@@ -117,19 +118,34 @@
         $(document).on('click', '.add-post', function(e) {
             e.preventDefault();
 
+		    let formData = new FormData();
+            let _imagePost = $('#image-post')[0].files[0];
+
             let title       = $('#title').val().trim();
-            let image 	    = $('#image').val().trim();
+            //let image 	    = $('#image').val().trim();
             let shortDesc 	= $('.shortDesc').val().trim();
             let category 	= $('#category').val().trim();
             let content 	= CKEDITOR.instances['editor'].getData();
 
-            if(!title|| !image || !category || !content || shortDesc){
+            formData.append('title', title);
+            formData.append('shortDesc', shortDesc);
+            formData.append('category', category);
+            formData.append('content', content);
+            formData.append('image', _imagePost);
+
+            console.log({ title, shortDesc, category, content, _imagePost });
+
+
+            if(!title || !_imagePost || !category || !content || !shortDesc){
                 return toastr.info('Vui lòng nhập đây đủ!')
             } else{
                 $.ajax({
                     url: `/blog/add`,
                     method: 'POST',
-                    data: { title, image, content, category, shortDesc },
+                    data: formData,
+                    enctype: 'multipart/form-data',
+                    processData: false,
+                    contentType: false,
                     success: resp => {
                         console.log({ resp })
                         if(!resp.error){

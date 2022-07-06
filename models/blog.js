@@ -28,9 +28,9 @@ module.exports = class BLOG extends BLOG_COLL {
                 let listBlog;
                 
                 if(categoryID){
-                    listBlog = await BLOG.find({category: categoryID, status: 1});
+                    listBlog = await BLOG.find({category: categoryID, status: 1}).sort({ createAt: -1 });
                 }else{
-                    listBlog = await BLOG.find({ status: 1 });
+                    listBlog = await BLOG.find({ status: 1 }).sort({ createAt: -1 });
                 }
 
                 if (!listBlog) return resolve({ error: true, message: 'cannot_get_list' });
