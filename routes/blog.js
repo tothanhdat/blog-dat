@@ -33,8 +33,8 @@ route.get('/update/:blogID', async (req, res) => {
 
 route.post('/update/:blogID', async (req, res) => {
     let { blogID } = req.params;
-    let { title, content, image, category, shortDesc } = req.body;
-    let infoBlog = await BLOG_MODEL.update({ blogID, title, content, image, category, shortDesc })
+    let { title, content, category, shortDesc } = req.body;
+    let infoBlog = await BLOG_MODEL.update({ blogID, title, content, category, shortDesc })
     res.json(infoBlog)
 })
 

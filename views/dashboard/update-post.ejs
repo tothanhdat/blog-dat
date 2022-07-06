@@ -42,7 +42,10 @@
                                                     </div>
                                                     <div class="mb-3">
                                                         <label for="example-email-input" class="form-label">Hình ảnh</label>
-                                                        <div>
+                                                        <input class="form-control" type="file" value="" id="image-post">
+                                                        <br>
+                                                        <img src="<%=infoBlog.image%>" height="200px" alt="">
+                                                        <!-- <div>
                                                             <form action="#" class="dropzone">
                                                                 <div class="fallback">
                                                                     <input name="file" type="file" multiple="multiple">
@@ -55,7 +58,7 @@
                                                                     <h5>Drop files here or click to upload.</h5>
                                                                 </div>
                                                             </form>
-                                                        </div>
+                                                        </div> -->
                                                     </div>
                                                     <!-- <div class="mb-3">
                                                         <label for="example-url-input" class="form-label">URL Hình ảnh (Optional)</label>
@@ -141,17 +144,17 @@
 
             let title       = $('#title').val().trim();
             let shortDesc 	= $('.shortDesc').val().trim();
-            let image 	    = $('#image').val().trim();
+            //let image 	    = $('#image').val().trim();
             let category 	= $('#category').val().trim();
             let content 	= CKEDITOR.instances['editor'].getData();
 
-            if(!title|| !image || !category){
+            if(!title|| !category){
                 return toastr.info('Vui lòng nhập đủ!')
             } else{
                 $.ajax({
                     url: `/blog/update/${blogID}`,
                     method: 'POST',
-                    data: { title, image, content, category, shortDesc },
+                    data: { title, content, category, shortDesc },
                     success: resp => {
                         console.log({ resp })
                         if(!resp.error){

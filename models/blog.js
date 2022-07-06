@@ -103,14 +103,14 @@ module.exports = class BLOG extends BLOG_COLL {
         })
     }
 
-    static update({ blogID, title, content, image, category, shortDesc }) {
+    static update({ blogID, title, content, category, shortDesc }) {
         return new Promise(async resolve => {
             try {
 
                 if (!ObjectID.isValid(blogID))
                     return resolve({ error: true, message: 'params_invalid' });
 
-                let infoUpdate = await BLOG_COLL.findByIdAndUpdate(blogID, { title, content, image, category, shortDesc }, {new: true})
+                let infoUpdate = await BLOG_COLL.findByIdAndUpdate(blogID, { title, content, category, shortDesc }, {new: true})
 
                 if (!infoUpdate) return resolve({ error: true, message: 'cannot_update' });
                 resolve({ error: false, data: infoUpdate });
