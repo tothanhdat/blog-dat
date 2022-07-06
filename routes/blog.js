@@ -18,6 +18,7 @@ route.post('/add', uploadMulter.single('image'), async (req, res) => {
     let { title, content, category, shortDesc } = req.body;
 
     let infoFile = req.file;
+    console.log({ path: infoFile.originalname });
 
     let infoBlog = await BLOG_MODEL.insert({ title, content, image: infoFile.originalname, category, shortDesc })
 

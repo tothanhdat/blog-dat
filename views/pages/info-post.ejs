@@ -11,7 +11,7 @@
     <meta property="og:type"               content="article" />
     <meta property="og:title"              content="<%=infoBlog.title %>" />
     <meta property="og:description"        content="<%=infoBlog.shortDesc || 'Xin chào các bạn, mình là Đạt. Hiện tại mình là 1 ITBA, mình thích chụp ảnh, đá bóng và các công việc liên quan đến lĩnh vực IT' %>" />
-    <meta property="og:image"              content="<%=infoBlog.image %>" />
+    <meta property="og:image"              content="/template/images/<%=infoBlog.image %>" />
     
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="title" content="Blog của Đạt">
@@ -127,10 +127,10 @@
     <!-- .featured-top -->
     <div class="featured-top">
             
-        <img src="<%=infoBlog.image %>" alt="post-image">
+        <img src="/template/images/<%=infoBlog.image %>" alt="post-image">
         
         <!-- .post-thumbnail -->
-        <div class="post-thumbnail" style="background-image:url(<%=infoBlog.image%>)">
+        <div class="post-thumbnail" style="background-image:url(/template/images/<%=infoBlog.image%>)">
                                   
             <!-- .entry-header -->
             <header class="entry-header">
