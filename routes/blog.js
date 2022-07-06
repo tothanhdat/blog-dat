@@ -13,14 +13,14 @@ route.get('/add', async (req, res) => {
     renderToView(req, res, 'dashboard/add-post.ejs', {})
 })
 
-route.post('/add', uploadMulter.single('image'), async (req, res) => {
+route.post('/add', async (req, res) => {
 
-    let { title, content, category, shortDesc } = req.body;
+    let { title, content, category, shortDesc, image } = req.body;
 
-    let infoFile = req.file;
-    console.log({ path: infoFile.originalname });
+    // let infoFile = req.file;
+    // console.log({ path: infoFile.originalname });
 
-    let infoBlog = await BLOG_MODEL.insert({ title, content, image: infoFile.originalname, category, shortDesc })
+    let infoBlog = await BLOG_MODEL.insert({ title, content, image, category, shortDesc })
 
     res.json(infoBlog)
 })

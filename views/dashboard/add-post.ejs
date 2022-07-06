@@ -118,7 +118,6 @@
         $(document).on('click', '.add-post', function(e) {
             e.preventDefault();
 
-		    let formData = new FormData();
             let _imagePost = $('#image-post')[0].files[0];
 
             let title       = $('#title').val().trim();
@@ -127,39 +126,56 @@
             let category 	= $('#category').val().trim();
             let content 	= CKEDITOR.instances['editor'].getData();
 
-            formData.append('title', title);
-            formData.append('shortDesc', shortDesc);
-            formData.append('category', category);
-            formData.append('content', content);
+		    let formData = new FormData();
+            // formData.append('title', title);
+            // formData.append('shortDesc', shortDesc);
+            // formData.append('category', category);
+            // formData.append('content', content);
             formData.append('image', _imagePost);
 
-            console.log({ title, shortDesc, category, content, _imagePost });
+            $.ajax({
+                url: "https://api.imgur.com/3/upload",
+                type: "POST",
+                datatype: "json",
+                headers: {
+                "Authorization": "Client-ID 1059a795be32ee2"
+                },
+                data: formData,
+                success: function(response) {
+                    console.log({ response });
+                    var photo = response.data.link;
+                    var photo_hash = response.data.deletehash;
 
-
-            if(!title || !_imagePost || !category || !content || !shortDesc){
-                return toastr.info('Vui lòng nhập đây đủ!')
-            } else{
-                $.ajax({
-                    url: `/blog/add`,
-                    method: 'POST',
-                    data: formData,
-                    enctype: 'multipart/form-data',
-                    processData: false,
-                    contentType: false,
-                    success: resp => {
-                        console.log({ resp })
-                        if(!resp.error){
-                            toastr['success']('Thêm bài viết thành công', 'Thông báo');
-                            setTimeout(() => {
-                                location.href = `/dashboard`
-                            }, 500);
-                        }else{
-                            return toastr['error']('Thêm bài viết thất bại', 'Thông báo');
-                        }
-                    },
-                    error: err => console.log({ err })
-                });
-            }
+                    if(!title || !_imagePost || !category || !content || !shortDesc){
+                        return toastr.info('Vui lòng nhập đây đủ!')
+                    } else{
+                        $.ajax({
+                            url: `/blog/add`,
+                            method: 'POST',
+                            data: { image: photo, title, shortDesc, category, content},
+                            enctype: 'multipart/form-data',
+                            processData: false,
+                            contentType: false,
+                            success: resp => {
+                                console.log({ resp })
+                                if(!resp.error){
+                                    toastr['success']('Thêm bài viết thành công', 'Thông báo');
+                                    setTimeout(() => {
+                                        location.href = `/dashboard`
+                                    }, 500);
+                                }else{
+                                    return toastr['error']('Thêm bài viết thất bại', 'Thông báo');
+                                }
+                            },
+                            error: err => console.log({ err })
+                        });
+                    }
+                },
+                cache: false,
+                contentType: false,
+                processData: false
+            });
+            //return console.log({ title, shortDesc, category, content, _imagePost });
         })
     })
     
