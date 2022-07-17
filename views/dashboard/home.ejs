@@ -225,8 +225,13 @@ input:checked + .slider:before {
                                                             <% CATEGORY.forEach(category => { %>
                                                                 <% if (category.id == blog.category) { %>
                                                                       <td><%=category.title %></td>
-                                                                <% } %>
+                                                                <% }else %>
                                                             <% }) %>
+
+                                                            <% if (blog.category == 0) { %>
+                                                                <td>About me</td>
+                                                            <% } %>
+                                                            
                                                             <td><%=blog.views %></td>
                                                             <td>Admin</td>
                                                             <td>

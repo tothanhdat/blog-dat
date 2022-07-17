@@ -79,7 +79,7 @@
                                 <!-- level 2 -->
                             </li>
                             
-                            <li><a href="/about-me">ABOUT ME</a></li>
+                            <li><a href="/blog/62b9d312bef55b7a0c83084e">ABOUT ME</a></li>
 
                             <% CATEGORY.forEach(category => { %>
                                 <li><a href="/category/type/<%=category.id%>"><%=category.title %> </a></li>
@@ -138,6 +138,8 @@
                 
                                 
                 <!-- .entry-meta -->
+                <% if (infoBlog.category != 0) { %>
+                 
                 <div class="entry-meta">
                     <span class="cat-links">
                         <a href="#" title="View all posts in Travel" rel="category tag">
@@ -149,6 +151,9 @@
                         </a>
                     </span>	
                 </div>
+
+                <% } %>
+
                 <!-- .entry-meta -->
                 
                 <!-- .entry-title -->
