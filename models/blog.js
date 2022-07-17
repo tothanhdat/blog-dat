@@ -141,7 +141,18 @@ module.exports = class BLOG extends BLOG_COLL {
                 if (!ObjectID.isValid(blogID))
                     return resolve({ error: true, message: 'params_invalid' });
 
-                let infoUpdate = await BLOG_COLL.findByIdAndUpdate(blogID, { title, content, image, category, shortDesc }, {new: true})
+                let conditionObj = {
+                    title, 
+                    content, 
+                    category, 
+                    shortDesc
+                };
+
+                if(image){
+                    conditionObj.image = image
+                }
+
+                let infoUpdate = await BLOG_COLL.findByIdAndUpdate(blogID, conditionObj, {new: true})
 
                 if (!infoUpdate) return resolve({ error: true, message: 'cannot_update' });
                 resolve({ error: false, data: infoUpdate });
