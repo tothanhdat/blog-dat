@@ -15,7 +15,7 @@ route.get('/add', async (req, res) => {
 
 route.post('/add', async (req, res) => {
     let { image, title, shortDesc, category, content } = req.body;
-    console.log({ image, title, shortDesc, category, content });
+    //console.log({ image, title, shortDesc, category, content });
     let infoBlog = await BLOG_MODEL.insert({ image, title, shortDesc, category, content })
 
     res.json(infoBlog)
@@ -33,8 +33,8 @@ route.get('/update/:blogID', async (req, res) => {
 
 route.post('/update/:blogID', async (req, res) => {
     let { blogID } = req.params;
-    let { title, content, category, shortDesc } = req.body;
-    let infoBlog = await BLOG_MODEL.update({ blogID, title, content, category, shortDesc })
+    let { title, image, content, category, shortDesc } = req.body;
+    let infoBlog = await BLOG_MODEL.update({ blogID, image, title, content, category, shortDesc })
     res.json(infoBlog)
 })
 

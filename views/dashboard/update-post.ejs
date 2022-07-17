@@ -145,29 +145,76 @@
             let title       = $('#title').val().trim();
             let shortDesc 	= $('.shortDesc').val().trim();
             //let image 	    = $('#image').val().trim();
+            let _imagePost = $('#image-post')[0].files[0];
             let category 	= $('#category').val().trim();
             let content 	= CKEDITOR.instances['editor'].getData();
 
-            if(!title|| !category){
-                return toastr.info('Vui lòng nhập đủ!')
-            } else{
-                $.ajax({
-                    url: `/blog/update/${blogID}`,
-                    method: 'POST',
-                    data: { title, content, category, shortDesc },
-                    success: resp => {
-                        console.log({ resp })
-                        if(!resp.error){
-                            toastr['success']('Cập nhật thành công', 'Thông báo');
-                            let blogID = resp.data._id
-                            location.reload();
-                        }else{
-                            return toastr['error']('Cập nhật thất bại', 'Thông báo');
-                        }
-                    },
-                    error: err => console.log({ err })
-                });
-            }
+		    var formData = new FormData();
+            formData.append('image', _imagePost);
+
+            $.ajax({
+                url: "https://api.imgur.com/3/image",
+                type: "POST",
+                datatype: "json",
+                headers: {
+                "Authorization": "Client-ID 1059a795be32ee2"
+                },
+                data: formData,
+                success: function(response) {
+                    console.log({ response });
+                    
+                    var photo = response.data.link;
+                    var photo_hash = response.data.deletehash;
+
+                    console.log({ image: photo, title, shortDesc, category, content });
+
+                    if(!title || !content){
+                        return toastr.info('Vui lòng nhập đây đủ!')
+                    } else{
+                        $.ajax({
+                            url: `/blog/update/${blogID}`,
+                            method: 'POST',
+                            data: { image: photo, title, shortDesc, category, content },
+                            success: resp => {
+                                console.log({ resp })
+                                if(!resp.error){
+                                    toastr['success']('Cập nhật bài viết thành công', 'Thông báo');
+                                    setTimeout(() => {
+                                        location.href = `/dashboard`
+                                    }, 500);
+                                }else{
+                                    return toastr['error']('Cập nhật bài viết thất bại', 'Thông báo');
+                                }
+                            },
+                            error: err => console.log({ err })
+                        });
+                    }
+                },
+                cache: false,
+                contentType: false,
+                processData: false
+            });
+
+            // if(!title || !content){
+            //     return toastr.info('Vui lòng nhập đủ!')
+            // } else{
+            //     $.ajax({
+            //         url: `/blog/update/${blogID}`,
+            //         method: 'POST',
+            //         data: { title, content, category, shortDesc },
+            //         success: resp => {
+            //             console.log({ resp })
+            //             if(!resp.error){
+            //                 toastr['success']('Cập nhật thành công', 'Thông báo');
+            //                 let blogID = resp.data._id
+            //                 location.reload();
+            //             }else{
+            //                 return toastr['error']('Cập nhật thất bại', 'Thông báo');
+            //             }
+            //         },
+            //         error: err => console.log({ err })
+            //     });
+            // }
         })
     })
     
