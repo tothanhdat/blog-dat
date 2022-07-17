@@ -44,6 +44,28 @@ module.exports = class BLOG extends BLOG_COLL {
         })
     }
 
+    static getListPostDashboard({ categoryID }) {
+        return new Promise(async resolve => {
+            try {
+                let listBlog;
+                
+                if(categoryID){
+                    listBlog = await BLOG.find({category: categoryID}).sort({ createAt: -1 });
+                }else{
+                    listBlog = await BLOG.find().sort({ createAt: -1 });
+                }
+
+                if (!listBlog) return resolve({ error: true, message: 'cannot_get_list' });
+
+                return resolve({ error: false, data: listBlog });
+
+            } catch (error) {
+
+                return resolve({ error: true, message: error.message });
+            }
+        })
+    }
+
     static getListTrending() {
         return new Promise(async resolve => {
             try {
@@ -93,9 +115,18 @@ module.exports = class BLOG extends BLOG_COLL {
                     await BLOG.findByIdAndUpdate(blogID, {views: viewsCurrent + 1}, {new: true})
                 }
 
+                //get next post
+                let nextPost = await BLOG.find({ _id: {$gt: blogID }}).limit(1);
+                let previousPost = await BLOG.find({ _id: {$gt: blogID }}).limit(1).sort({_id: -1 });
+
                 if (!infoBlog) return resolve({ error: true, message: 'cannot_get_info' });
 
-                return resolve({ error: false, data: infoBlog });
+                return resolve({ 
+                    error: false, 
+                    data: infoBlog, 
+                    nextPost: nextPost[0], 
+                    previousPost: previousPost[0] 
+                });
 
             } catch (error) {
                 return resolve({ error: true, message: error.message });
@@ -111,6 +142,24 @@ module.exports = class BLOG extends BLOG_COLL {
                     return resolve({ error: true, message: 'params_invalid' });
 
                 let infoUpdate = await BLOG_COLL.findByIdAndUpdate(blogID, { title, content, category, shortDesc }, {new: true})
+
+                if (!infoUpdate) return resolve({ error: true, message: 'cannot_update' });
+                resolve({ error: false, data: infoUpdate });
+
+            } catch (error) {
+                return resolve({ error: true, message: error.message });
+            }
+        });
+    }
+
+    static updateStatus({ blogID, status }) {
+        return new Promise(async resolve => {
+            try {
+
+                if (!ObjectID.isValid(blogID))
+                    return resolve({ error: true, message: 'params_invalid' });
+
+                let infoUpdate = await BLOG_COLL.findByIdAndUpdate(blogID, { status }, {new: true})
 
                 if (!infoUpdate) return resolve({ error: true, message: 'cannot_update' });
                 resolve({ error: false, data: infoUpdate });

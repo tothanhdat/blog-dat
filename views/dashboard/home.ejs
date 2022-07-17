@@ -1,6 +1,71 @@
 <% moment.locale('vi')%>
 <%- include ('./header.ejs') %>
 <%- include ('./sidebar.ejs') %>
+
+<style>
+    /* The switch - the box around the slider */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: #2bd019;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2bd019;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+</style>
            
             <!-- ============================================================== -->
             <!-- Start right Content here -->
@@ -146,13 +211,14 @@
                                                 <th>Danh mục</th>
                                                 <th>Lượt xem</th>
                                                 <th>Người viết</th>
+                                                <th>Trạng thái</th>
                                                 <th>Ngày tạo</th>
                                                 <th>Tác vụ</th>
                                             </tr>
                                             </thead>
                                             <tbody>
-                                                <% if (listBlog && listBlog.length) { %>
-                                                    <% listBlog.forEach((blog, index) => { %>
+                                                <% if (listBlogDashboard && listBlogDashboard.length) { %>
+                                                    <% listBlogDashboard.forEach((blog, index) => { %>
                                                         <tr>
                                                             <td><%=index+1 %></td>
                                                             <td><a href="/blog/<%=blog._id%>" target="_blank"><%=blog.title %></a></td>
@@ -163,6 +229,20 @@
                                                             <% }) %>
                                                             <td><%=blog.views %></td>
                                                             <td>Admin</td>
+                                                            <td>
+                                                                <% if (blog.status == 1) { %>
+                                                                    <label class="switch" _blogID="<%=blog._id%>">
+                                                                        <input type="checkbox" checked>
+                                                                        <span class="slider round"></span>
+                                                                    </label>
+                                                                <% }else{%>
+                                                                    <label class="switch" _blogID="<%=blog._id%>">
+                                                                        <input type="checkbox">
+                                                                        <span class="slider round"></span>
+                                                                    </label>
+                                                                <% } %>
+                                                                
+                                                            </td>
                                                             <td><%=moment(blog.createAt).format('L'); %></td>
                                                             <td>
                                                                 <!-- <a href="/blog/remove/<%=blog._id%>" class="btn btn-outline-secondary btn-sm btnRemove" title="Xóa">
@@ -250,5 +330,44 @@
         <!-- END layout-wrapper -->
 
 <%- include ('./footer.ejs') %>
+
+<script>
+    $(".switch").on('change', function() {
+        let blogID = $(this).attr("_blogID");
+        if ($(this).find('input').is(':checked')) {
+            $.ajax({
+                url: `/blog/update-status/${blogID}`,
+                method: 'POST',
+                data: { status: 1 },
+                success: resp => {
+                    console.log({ resp })
+                    if(!resp.error){
+                        toastr['success']('Bài viết đã được bật', 'Thông báo');
+                    }else{
+                        return toastr['error']('Thất bại', 'Thông báo');
+                    }
+                },
+                error: err => console.log({ err })
+            });
+        }
+        else {
+            //close
+            $.ajax({
+                url: `/blog/update-status/${blogID}`,
+                method: 'POST',
+                data: { status: 0 },
+                success: resp => {
+                    console.log({ resp })
+                    if(!resp.error){
+                        toastr['success']('Bài viết đã được tắt', 'Thông báo');
+                    }else{
+                        return toastr['error']('Thất bại', 'Thông báo');
+                    }
+                },
+                error: err => console.log({ err })
+            });
+        }
+    });
+</script>
         
         

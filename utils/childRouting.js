@@ -16,11 +16,13 @@ let renderToView = async function(req, res, view, data) {
     }
     
     let listBlog                = await BLOG_MODEL.getList({});
+    let listBlogDashboard       = await BLOG_MODEL.getListPostDashboard({});
     let listBlogTrending        = await BLOG_MODEL.getListTrending();
-
+    
     let totalViews              = await BLOG_MODEL.countViews({});
     data.moment                 = moment;
     data.listBlog               = listBlog.data;
+    data.listBlogDashboard      = listBlogDashboard.data;
     data.listBlogTrending       = listBlogTrending.data;
     data.CATEGORY               = CATEGORY;
     data.totalBlog              = listBlog.data.length;

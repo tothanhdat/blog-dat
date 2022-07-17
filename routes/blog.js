@@ -38,6 +38,12 @@ route.post('/update/:blogID', async (req, res) => {
     res.json(infoBlog)
 })
 
+route.post('/update-status/:blogID', async (req, res) => {
+    let { blogID } = req.params;
+    let { status } = req.body;
+    let infoBlog = await BLOG_MODEL.updateStatus({ blogID, status })
+    res.json(infoBlog)
+})
 
 route.get('/list-post-trending', async (req, res) => {
     let listBlogTrending = await BLOG_MODEL.getListTrending();
@@ -48,7 +54,18 @@ route.get('/list-post-trending', async (req, res) => {
 route.get('/:blogID', async (req, res) => {
     let { blogID } = req.params;
     let infoBlog = await BLOG_MODEL.getInfo({ blogID, views: 1 })
-    res.render('pages/info-post', { infoBlog: infoBlog.data, moment, CATEGORY })
+    // res.render('pages/info-post', { 
+    //     infoBlog: infoBlog.data, 
+    //     moment, 
+    //     CATEGORY,
+    //     nextPost: infoBlog.nextPost,
+    //     previousPost: infoBlog.previousPost,
+    // })
+    renderToView(req, res, 'pages/info-post', {
+        infoBlog: infoBlog.data, 
+        nextPost: infoBlog.nextPost,
+        previousPost: infoBlog.previousPost,
+    })
 })
 
 route.get('/info/:blogID', async (req, res) => {
