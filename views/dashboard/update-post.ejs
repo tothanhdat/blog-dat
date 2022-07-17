@@ -42,9 +42,9 @@
                                                     </div>
                                                     <div class="mb-3">
                                                         <label for="example-email-input" class="form-label">Hình ảnh</label>
-                                                        <input class="form-control" type="file" value="" id="image-post">
+                                                        <input class="form-control" type="file" value="" id="image-post" onchange="readURL(this)">
                                                         <br>
-                                                        <img src="<%=infoBlog.image%>" height="200px" alt="">
+                                                        <img src="<%=infoBlog.image%>" id="img" height="200px" alt="">
                                                         <!-- <div>
                                                             <form action="#" class="dropzone">
                                                                 <div class="fallback">
@@ -162,7 +162,7 @@
                 data: formData,
                 success: function(response) {
                     console.log({ response });
-                    
+
                     var photo = response.data.link;
                     var photo_hash = response.data.deletehash;
 
@@ -216,6 +216,25 @@
             //     });
             // }
         })
+
+        $('#image-post').change(function(){
+            var input = this;
+            var url = $(this).val();
+            var ext = url.substring(url.lastIndexOf('.') + 1).toLowerCase();
+            if (input.files && input.files[0]&& (ext == "gif" || ext == "png" || ext == "jpeg" || ext == "jpg")) 
+            {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                $('#img').attr('src', e.target.result);
+                }
+            reader.readAsDataURL(input.files[0]);
+            }
+            else
+            {
+            $('#img').attr('src', '/assets/no_preview.png');
+            }
+        });
     })
     
 </script>
