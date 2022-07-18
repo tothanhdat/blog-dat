@@ -40,6 +40,9 @@ const blogSchema = new Schema({
 
     category: { type: Number, required: true, default: 1 },
 
+    //Ẩn title khi vào chi tiết bài viết
+    hideTitle: { type: Boolean, default: true },
+
     createAt: { type: Date, required: true, default: Date.now },
 
     lastUpdate: { type: Date, required: true, default: Date.now },
