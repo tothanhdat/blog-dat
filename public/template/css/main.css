@@ -60,6 +60,10 @@ img {
  	max-width: 50%; height: auto;
 	}
 
+.entry-content img {
+	max-width: 80%; height: auto;
+	}
+
 /* ----- 1.2 FONTS ----- */ 
 /* BODY */
 body,
