@@ -146,29 +146,35 @@
             <% if (!infoBlog.hideTitle) { %>
                 <header class="entry-header">
                     
-                                    
-                    <!-- .entry-meta -->
-                    <% if (infoBlog.category != 0) { %>
-                    
-                    <div class="entry-meta">
-                        <span class="cat-links">
-                            <a href="#" title="View all posts in Travel" rel="category tag">
-                                <% CATEGORY.forEach(category => { %>
-                                    <% if (category.id == infoBlog.category) { %>
-                                        <%=category.title%> 
-                                    <% } %>
-                                <% }) %>
-                            </a>
-                        </span>	
-                    </div>
+                    <% if (infoBlog.title != 'ABOUT ME') { %>
+                     
+                        <!-- .entry-meta -->
+                        <% if (infoBlog.category != 0) { %>
+                        
+                        <div class="entry-meta">
+                            <span class="cat-links">
+                                <a href="#" title="View all posts in Travel" rel="category tag">
+                                    <% CATEGORY.forEach(category => { %>
+                                        <% if (category.id == infoBlog.category) { %>
+                                            <%=category.title%> 
+                                        <% } %>
+                                    <% }) %>
+                                </a>
+                            </span>	
+                        </div>
 
                     <% } %>
+
+                    <% } %>                
+
 
                     <!-- .entry-meta -->
                     
                     <!-- .entry-title -->
                     <h1 class="entry-title"><%=infoBlog.title %> </h1>
                                     
+                    <% if (infoBlog.title != 'ABOUT ME') { %>
+
                     <!-- .entry-meta -->
                     <div class="entry-meta">
                         <span class="entry-date">
@@ -179,6 +185,7 @@
                         </span>
                     </div>
                     <!-- .entry-meta -->
+                    <% } %> 
                     
                 </header>
             <% } %>
