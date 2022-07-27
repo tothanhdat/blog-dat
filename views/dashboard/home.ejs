@@ -65,6 +65,7 @@ input:checked + .slider:before {
 .slider.round:before {
   border-radius: 50%;
 }
+
 </style>
            
             <!-- ============================================================== -->
@@ -202,68 +203,72 @@ input:checked + .slider:before {
                                     </div><!-- end card header -->
 
                                     <div class="card-body">
+                                        <div style="width: 100%;">
+                                            <div class="table-responsive">
+                                                <table id="datatable" class="table table-bordered dt-responsive  nowrap w-100">
+                                                    <thead>
+                                                    <tr>
+                                                        <th>STT</th>
+                                                        <th>Tên bài viết</th>
+                                                        <th>Danh mục</th>
+                                                        <th>Lượt xem</th>
+                                                        <th>Người viết</th>
+                                                        <th>Trạng thái</th>
+                                                        <th>Ngày tạo</th>
+                                                        <th>Tác vụ</th>
+                                                    </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <% if (listBlogDashboard && listBlogDashboard.length) { %>
+                                                            <% listBlogDashboard.forEach((blog, index) => { %>
+                                                                <tr>
+                                                                    <td><%=index+1 %></td>
+                                                                    <td><a href="/blog/<%=blog._id%>" target="_blank"><%=blog.title %></a></td>
+                                                                    <% CATEGORY.forEach(category => { %>
+                                                                        <% if (category.id == blog.category) { %>
+                                                                              <td><%=category.title%></td>
+                                                                        <% }else %>
+                                                                    <% }) %>
         
-                                        <table id="datatable" class="table table-bordered dt-responsive  nowrap w-100">
-                                            <thead>
-                                            <tr>
-                                                <th>STT</th>
-                                                <th>Tên bài viết</th>
-                                                <th>Danh mục</th>
-                                                <th>Lượt xem</th>
-                                                <th>Người viết</th>
-                                                <th>Trạng thái</th>
-                                                <th>Ngày tạo</th>
-                                                <th>Tác vụ</th>
-                                            </tr>
-                                            </thead>
-                                            <tbody>
-                                                <% if (listBlogDashboard && listBlogDashboard.length) { %>
-                                                    <% listBlogDashboard.forEach((blog, index) => { %>
-                                                        <tr>
-                                                            <td><%=index+1 %></td>
-                                                            <td><a href="/blog/<%=blog._id%>" target="_blank"><%=blog.title %></a></td>
-                                                            <% CATEGORY.forEach(category => { %>
-                                                                <% if (category.id == blog.category) { %>
-                                                                      <td><%=category.title%></td>
-                                                                <% }else %>
+                                                                    <% if (blog.category == 0) { %>
+                                                                        <td>About me</td>
+                                                                    <% } %>
+                                                                    
+                                                                    <td><%=blog.views %></td>
+                                                                    <td>Admin</td>
+                                                                    <td>
+                                                                        <% if (blog.status == 1) { %>
+                                                                            <label class="switch" _blogID="<%=blog._id%>">
+                                                                                <input type="checkbox" checked>
+                                                                                <span class="slider round"></span>
+                                                                            </label>
+                                                                        <% }else{%>
+                                                                            <label class="switch" _blogID="<%=blog._id%>">
+                                                                                <input type="checkbox">
+                                                                                <span class="slider round"></span>
+                                                                            </label>
+                                                                        <% } %>
+                                                                        
+                                                                    </td>
+                                                                    <td><%=moment(blog.createAt).format('L'); %></td>
+                                                                    <td>
+                                                                        <!-- <a href="/blog/remove/<%=blog._id%>" class="btn btn-outline-secondary btn-sm btnRemove" title="Xóa">
+                                                                            <i class="fas fa-trash-alt"></i>
+                                                                        </a> -->
+                                                                        <a href="/blog/update/<%=blog._id%>" style="margin-left: 10px;" class="btn btn-outline-secondary btn-sm btnEdit" title="Chỉnh sửa">
+                                                                            <i class="fas fa-pencil-alt"></i>
+                                                                        </a>
+                                                                    </td>
+                                                                </tr>
                                                             <% }) %>
-
-                                                            <% if (blog.category == 0) { %>
-                                                                <td>About me</td>
-                                                            <% } %>
-                                                            
-                                                            <td><%=blog.views %></td>
-                                                            <td>Admin</td>
-                                                            <td>
-                                                                <% if (blog.status == 1) { %>
-                                                                    <label class="switch" _blogID="<%=blog._id%>">
-                                                                        <input type="checkbox" checked>
-                                                                        <span class="slider round"></span>
-                                                                    </label>
-                                                                <% }else{%>
-                                                                    <label class="switch" _blogID="<%=blog._id%>">
-                                                                        <input type="checkbox">
-                                                                        <span class="slider round"></span>
-                                                                    </label>
-                                                                <% } %>
-                                                                
-                                                            </td>
-                                                            <td><%=moment(blog.createAt).format('L'); %></td>
-                                                            <td>
-                                                                <!-- <a href="/blog/remove/<%=blog._id%>" class="btn btn-outline-secondary btn-sm btnRemove" title="Xóa">
-                                                                    <i class="fas fa-trash-alt"></i>
-                                                                </a> -->
-                                                                <a href="/blog/update/<%=blog._id%>" style="margin-left: 10px;" class="btn btn-outline-secondary btn-sm btnEdit" title="Chỉnh sửa">
-                                                                    <i class="fas fa-pencil-alt"></i>
-                                                                </a>
-                                                            </td>
-                                                        </tr>
-                                                    <% }) %>
-                                                <% }else{%>
-
-                                                <% } %>
-                                            </tbody>
-                                        </table>
+                                                        <% }else{%>
+        
+                                                        <% } %>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                        
         
                                     </div>
 
