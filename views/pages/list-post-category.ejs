@@ -140,11 +140,11 @@
                     <% if (listBlogTrending && listBlogTrending.length) { %>
                         <% listBlogTrending.forEach(blog => { %>
                           <li>
-                            <a href="#" class="tptn_link">
+                            <a href="/blog/<%=blog._id%>" class="tptn_link">
                                 <img style="max-width: 20%" src="<%=blog.image%>" alt="post-image" class="tptn_thumb">
                             </a>
                               <span class="tptn_after_thumb">
-                                  <a href="#" class="tptn_link"><span class="tptn_title"><%=blog.title%></span></a>
+                                  <a href="/blog/<%=blog._id%>" class="tptn_link"><span class="tptn_title"><%=blog.title%></span></a>
                                   <!--<span class="tptn_author"> by <a href="#">Johnny Doe</a></span>-->
                                   <span class="tptn_date"> <%=moment(blog.createAt).format('L'); %></span> 
                               </span>

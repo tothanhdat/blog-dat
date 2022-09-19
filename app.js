@@ -59,6 +59,11 @@ app.get('/logout', function(req, res){
     res.redirect('/login');
 });
 
+//Dẫn đến page 404
+app.use(function(req, res, next){
+    res.status(404).render('pages/page-404', {title: "Sorry, page not found"});
+});
+
 const PORT = process.env.PORT || 3000;
 
 const uri = 'mongodb://localhost/blogtodat';
