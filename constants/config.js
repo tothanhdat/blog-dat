@@ -6,12 +6,12 @@ exports.CATEGORY = [
     },
     {
         id: 3,
-        title: "IT Sharing",
+        title: "Travel",
         image: "https://imgur.com/W7sh9w6.jpg"
     },
     {
         id: 5,
-        title: "IT-BA",
+        title: "IT & BA",
         image: "https://imgur.com/G9zEmIR.jpg"
     },
     // {
