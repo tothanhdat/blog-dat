@@ -13,47 +13,64 @@
           <!-- site-content -->
           <div id="content" class="site-content" role="main">
               <!-- BLOG LIST -->
-              <div class="blog-bold waterfall blog-stream">
-                  <!-- post -->
+              <div class="media-grid-wrap">
+                <div class="masonry blog-masonry blog-stream tablet-view" data-layout="masonry" data-mobile-item-width="220" data-item-width="420" style="width: 874.203px; position: relative; height: 1261.74px;">       
                   <% if (products && products.length) { %>
                     <%products.forEach(blog => {%> 
-                      <article class="hentry has-post-thumbnail slideUp">
-                        <div class="post-thumbnail" style="background-image:url(<%=blog.image%>)">
-                            <header class="entry-header">
-                                <div class="entry-meta">
-                                    <span class="cat-links">
-                                        <a href="#" title="View all posts in Life" rel="category tag">
-                                          <% CATEGORY.forEach(category => { %>
-                                              <% if (category.id == blog.category) { %>
-                                                    <%=category.title%> 
-                                              <% } %>
-                                          <% }) %>
-                                        </a>
-                                    </span>
-                                </div>
-                                
-                                <h2 class="entry-title"><a href="/blog/<%=blog._id%>"><%=blog.title %> </a></h2>
-                            
-                                <div class="entry-meta">
-                                    <span class="entry-date">
-                                        <time class="entry-date" datetime="2014-07-13T04:34:10+00:00"><%=moment(blog.createAt).format('LL'); %></time>
-                                    </span> 
-                                    <span class="comment-link">
-                                        <a href="#comments"><%=blog.views%> Lượt xem</a>
-                                    </span>
-                                </div>
-                                
-                                <p><a href="/blog/<%=blog._id%>" class="more-link">Xem bài viết</a></p>
-                            </header>
+
+                    <article class="hentry post has-post-thumbnail slideUp animated" style="position: absolute; left: 0px; top: 0px; width: 49.9884%; box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;">
+                        <!-- .featured-image -->
+                        <div class="featured-image">
+                            <a href="/blog/<%=blog._id%>"><img style="flex-shrink: 0; min-width: 100%; max-height: 240px; object-fit: cover;" width="1440" height="1440" src="<%=blog.image%>" alt="blog-image"></a>
                         </div>
+                        
+                        <header class="entry-header">
+                            
+                            <!-- .entry-title -->
+                            <h2 class="entry-title"><a href="/blog/<%=blog._id%>"><%=blog.title%></a></h2>
+                            
+                            <!-- .entry-meta -->
+                            <div class="entry-meta">
+                                <span class="cat-links">
+                                    <a href="#" title="View all posts in Adventure" rel="category tag">
+                                      <% CATEGORY.forEach(category => { %>
+                                        <% if (category.id == blog.category) { %>
+                                              <%=category.title%> 
+                                        <% } %>
+                                    <% }) %>
+                                    </a>
+                                </span>	
+                                <span class="entry-date">
+                                    <time class="entry-date" datetime=""><%=moment(blog.createAt).format('LL'); %></time>
+                                </span>    
+                                <span>
+                                    <a href="/blog/<%=blog._id%>"><%=blog.views%> Lượt xem</a>
+                                </span>
+                            </div>
+                        </header>
+                        
+                        <!-- .entry-content -->
+                        <div class="entry-content">
+                          <p><%=blog.shortDesc ? blog.shortDesc.slice(0, 190).concat('...') : `Chào các bạn, mình là Đạt đây, hiện tại mình là một ITBA. Đây là blog nhằm chia sẻ các câu chuyện trong cuộc sống của mình cũng như chia sẻ các kiến thức bổ ích về lập trình và BA mà mình tích lũy được.` %> 
+                              <span class="more">
+                                  <a href="/blog/<%=blog._id %>" class="more-link">Đọc thêm</a>
+                              </span>
+                          </p>
+                      
+                        </div>
+                        <!-- .entry-content -->
+                        
+                        
                     </article>
-                    <%})%> 
+                    <%})%>
                   <% }else{%>
                     <div style="text-align: center; padding-top: 40px;">
                       <img src="/template/images/site/not_found.png" alt="post-image" class="tptn_thumb">
                       <p style="font-size: large; color: rgb(82, 82, 82);">Sorry!! Không tìm thấy bài viết nào</p>
                     </div>
                   <% } %>
+                    
+                </div>
               </div>
             <!-- BLOG BOLD --> 
               

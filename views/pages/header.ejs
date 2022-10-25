@@ -80,7 +80,7 @@
                             <li><a href="/blog/62b9d312bef55b7a0c83084e">ABOUT ME</a></li>
 
                             <% CATEGORY.forEach(category => { %>
-                                <li><a href="/category/type/<%=category.id%>"><%=category.title %> </a></li>
+                                <li class="menu-<%=category.id%>"><a href="/category/type/<%=category.id%>"><%=category.title %> </a></li>
                             <% }) %>
 
                         </ul>
