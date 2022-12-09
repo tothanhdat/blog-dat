@@ -1,7 +1,6 @@
 const ObjectID = require('mongoose').Types.ObjectId;
 const REGISTER_CUSTOMER_COLL = require('../database/register-customer-coll');
 const nodemailer = require("nodemailer");
-const { google } = require('googleapis');
 const { OAuth2Client  } = require('google-auth-library');
 
 require('dotenv').config();
