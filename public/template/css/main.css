@@ -235,7 +235,7 @@ input:not([type=submit]):not([type=button]):not([type=file]):not([type=radio]):n
 input.input-text,
 textarea,
 select {
- 	padding: .85em 1em; width: 100%; font-size: 13px; color: #333; border: 1px solid #eee; background: #fff; -webkit-appearance: none; -webkit-tap-highlight-color: transparent; box-sizing: border-box;
+ 	padding: .85em 1em; width: 100%; font-size: 13px; color: #333; border: 1px solid #858585; background: #fff; -webkit-appearance: none; -webkit-tap-highlight-color: transparent; box-sizing: border-box;
 	}
 input:not([type=submit]):not([type=button]):not([type=file]):not([type=radio]):not([type=checkbox]):hover,
 textarea:hover,

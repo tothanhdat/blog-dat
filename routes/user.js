@@ -1,7 +1,8 @@
-const route             = require('express').Router();
-const checkActive       = require('../utils/checkActive');
-const { renderToView }  = require('../utils/childRouting');
-const USER_MODEL        = require('../models/user');
+const route                     = require('express').Router();
+const checkActive               = require('../utils/checkActive');
+const { renderToView }          = require('../utils/childRouting');
+const USER_MODEL                = require('../models/user');
+const REGISTER_ACCOUNT_MODEL    = require('../models/register-customer');
 
 //TRANG ĐĂNG NHẬP
 route.post('/login', async (req, res) => {
@@ -22,6 +23,26 @@ route.post('/register', async (req, res) => {
     let { username, password } = req.body;
     let infoUser = await USER_MODEL.register(username, password);
     res.json(infoUser)
+});
+
+//API đăng ký account
+route.post('/register-customer', async (req, res) => {
+    let { name, email, questionContent } = req.body;
+    let infoCustomer = await REGISTER_ACCOUNT_MODEL.register({ name, email, questionContent});
+    res.json(infoCustomer)
+});
+
+//API lấy danh sách account đăng ký
+route.get('/list-customer', async (req, res) => {
+    let listCustomer = await REGISTER_ACCOUNT_MODEL.getList();
+    res.json(listCustomer)
+});
+
+//API gửi email
+route.post('/send-email', async (req, res) => {
+    let { title, content } = req.body;
+    let actionSendEmail = await REGISTER_ACCOUNT_MODEL.sendEmail({ title, content });
+    res.json(actionSendEmail)
 });
 
 module.exports = route;
