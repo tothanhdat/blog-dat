@@ -14,6 +14,7 @@ const { renderToView }  = require('../utils/childRouting');
     
     await BLOG_COLL
     .find({ status: 1 })
+    .sort({ createAt: -1 })
     .skip((perPage * page) - perPage) // Trong page đầu tiên sẽ bỏ qua giá trị là 0
     .limit(perPage)
     .exec((err, products) => {
@@ -43,6 +44,7 @@ const { renderToView }  = require('../utils/childRouting');
     
     await BLOG_COLL
     .find({category: categoryID, status: 1})
+    .sort({ createAt: -1 })
     .skip((perPage * page) - perPage) // Trong page đầu tiên sẽ bỏ qua giá trị là 0
     .limit(perPage)
     .exec((err, products) => {
