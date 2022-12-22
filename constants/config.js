@@ -7,7 +7,7 @@ exports.CATEGORY = [
     {
         id: 3,
         title: "Travel",
-        image: "https://imgur.com/W7sh9w6.jpg"
+        image: "https://i.imgur.com/YDWhitN.jpg"
     },
     {
         id: 5,
