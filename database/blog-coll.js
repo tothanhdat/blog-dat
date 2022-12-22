@@ -8,6 +8,8 @@ const blogSchema = new Schema({
      */
     title: String,
 
+    slug: String,
+
     /**
      * Nội dung
      */

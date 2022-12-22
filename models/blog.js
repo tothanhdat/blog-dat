@@ -1,5 +1,6 @@
 const ObjectID = require('mongoose').Types.ObjectId;
 const BLOG_COLL = require('../database/blog-coll');
+const convertToSlug = require('../constants/utils');
 
 module.exports = class BLOG extends BLOG_COLL {
 
@@ -10,7 +11,10 @@ module.exports = class BLOG extends BLOG_COLL {
                 if (!title || !content || !image || !category || !shortDesc)
                     return resolve({ error: true, message: 'params_invalid' });
 
-                let infoAfterInsert = new BLOG({ title, content, image, category, shortDesc });
+                let slug = convertToSlug(title);
+                console.log({ slug });
+
+                let infoAfterInsert = new BLOG({ title, slug, content, image, category, shortDesc });
                 let saveDataInsert = await infoAfterInsert.save();
 
                 if (!saveDataInsert) return resolve({ error: true, message: 'cannot_insert' });
