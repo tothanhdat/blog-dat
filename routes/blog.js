@@ -68,6 +68,18 @@ route.get('/:blogID', async (req, res) => {
     })
 })
 
+route.get('/bai-viet/:slug', async (req, res) => {
+    let { slug } = req.params;
+    
+    let infoBlog = await BLOG_MODEL.getInfoBySlug({ slug, views: 1 });
+   
+    renderToView(req, res, 'pages/info-post', {
+        infoBlog: infoBlog.data, 
+        nextPost: infoBlog.nextPost,
+        previousPost: infoBlog.previousPost,
+    })
+})
+
 route.get('/info/:blogID', async (req, res) => {
     let { blogID } = req.params;
     let infoBlog = await BLOG_MODEL.getInfo({ blogID });

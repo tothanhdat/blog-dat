@@ -138,6 +138,32 @@ module.exports = class BLOG extends BLOG_COLL {
         })
     }
 
+    static getInfoBySlug({ slug, views }) {
+        return new Promise(async resolve => {
+            try {
+                
+                if (!slug)
+                    return resolve({ error: true, message: 'params_invalid' });
+
+                let infoBlog = await BLOG.findOne({slug})
+
+                let viewsCurrent = infoBlog.views;
+
+                //Update view when seen detai blog
+                if(views){
+                    await BLOG.findOneAndUpdate(slug, {views: viewsCurrent + 1}, {new: true})
+                }
+
+                if (!infoBlog) return resolve({ error: true, message: 'cannot_get_info' });
+
+                return resolve({ error: false, data: infoBlog });
+
+            } catch (error) {
+                return resolve({ error: true, message: error.message });
+            }
+        })
+    }
+
     static update({ blogID, title, content, image, category, shortDesc }) {
         return new Promise(async resolve => {
             try {
