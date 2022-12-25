@@ -5,6 +5,9 @@
     pointer-events:none;
     opacity:0.6;
   }
+  .widget-title {
+    color: #7a7a7a !important;
+  }
 </style>
 <br>
 <div id="main" class="site-main">
@@ -160,7 +163,7 @@
                               <span class="tptn_after_thumb">
                                   <a href="/blog/bai-viet/<%=blog.slug%>" class="tptn_link"><span class="tptn_title"><%=blog.title%></span></a>
                                   <!--<span class="tptn_author"> by <a href="#">Johnny Doe</a></span>-->
-                                  <span class="tptn_date"> <%=moment(blog.createAt).format('L'); %></span> 
+                                  <span style="color: rgb(110 110 110) !important" class="tptn_date">Lượt xem: <%=blog.views %></span> 
                               </span>
                           </li>
                         <% }) %>
