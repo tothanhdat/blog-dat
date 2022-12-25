@@ -1,8 +1,6 @@
 const route             = require('express').Router();
 const moment            = require('moment')
 const BLOG_MODEL        = require('../models/blog.js');
-const { CATEGORY }      = require('../constants/config');
-const { uploadMulter }  = require('../utils/config_multer');
 
 const { renderToView }  = require('../utils/childRouting');
 
@@ -63,8 +61,8 @@ route.get('/:blogID', async (req, res) => {
     // })
     renderToView(req, res, 'pages/info-post', {
         infoBlog: infoBlog.data, 
-        nextPost: infoBlog.nextPost,
-        previousPost: infoBlog.previousPost,
+        // nextPost: infoBlog.nextPost,
+        // previousPost: infoBlog.previousPost,
     })
 })
 
@@ -75,8 +73,6 @@ route.get('/bai-viet/:slug', async (req, res) => {
    
     renderToView(req, res, 'pages/info-post', {
         infoBlog: infoBlog.data, 
-        nextPost: infoBlog.nextPost,
-        previousPost: infoBlog.previousPost,
     })
 })
 

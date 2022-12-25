@@ -120,16 +120,16 @@ module.exports = class BLOG extends BLOG_COLL {
                 }
 
                 //get next post
-                let nextPost = await BLOG.find({ _id: {$gt: blogID }}).limit(1);
-                let previousPost = await BLOG.find({ _id: {$gt: blogID }}).limit(1).sort({_id: -1 });
+                // let nextPost = await BLOG.find({ _id: {$gt: blogID }}).limit(1);
+                // let previousPost = await BLOG.find({ _id: {$gt: blogID }}).limit(1).sort({_id: -1 });
 
                 if (!infoBlog) return resolve({ error: true, message: 'cannot_get_info' });
 
                 return resolve({ 
                     error: false, 
                     data: infoBlog, 
-                    nextPost: nextPost[0], 
-                    previousPost: previousPost[0] 
+                    // nextPost: nextPost[0], 
+                    // previousPost: previousPost[0] 
                 });
 
             } catch (error) {
