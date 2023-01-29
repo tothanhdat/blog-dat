@@ -339,8 +339,11 @@
             let email = $("#emailCustomer").val();
             let questionContent = $("#comment").val();
 
-            if(!email.match(mailformat))
-            {
+            if(!email || !questionContent){
+                return toastr['warning']('Hãy để lại email và nội dung', 'Thông báo');
+            }
+
+            if(!email.match(mailformat)){
                 return toastr['warning']('Email không hợp lệ', 'Thông báo');
             }
 
@@ -353,7 +356,7 @@
                     if(!resp.error){
                         toastr['success']('Bình luận của bạn đã được gửi đi.', 'Xin Cảm ơn ^^');
                         setTimeout(() => {
-                            return toastr['success']('Bạn sẽ nhận được email sớm nhất từ tôi.', 'Thông báo');
+                            return toastr['success']('Bạn sẽ nhận được phản hồi sớm nhất từ mình nhé ^^', 'Thông báo');
                         }, 5000);
                     }else{
                         return toastr['error']('Đã xảy ra lỗi', 'Thông báo');

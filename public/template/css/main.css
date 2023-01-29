@@ -2243,7 +2243,7 @@ p.logged-in-as a:hover {
 	text-align: center; 
 	}
 .intro .profile-image img { 
-	width: auto; max-width: 50%; max-height: 280px; border-radius: 50%; margin-bottom: 2.4em;
+	width: auto; max-width: 35%; max-height: 280px; border-radius: 50%; margin-bottom: 2.4em;
 	}
 .intro h2 {
 	margin-bottom: 0;
