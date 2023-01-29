@@ -151,7 +151,7 @@ module.exports = class BLOG extends BLOG_COLL {
 
                 //Update view when seen detai blog
                 if(views){
-                    await BLOG.findOneAndUpdate(slug, {views: viewsCurrent + 1}, {new: true})
+                    await BLOG.findByIdAndUpdate(infoBlog._id, {views: viewsCurrent + 1}, {new: true})
                 }
 
                 if (!infoBlog) return resolve({ error: true, message: 'cannot_get_info' });
