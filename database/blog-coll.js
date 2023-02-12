@@ -19,6 +19,8 @@ const blogSchema = new Schema({
      * Nội dung ngắn
      */
     shortDesc: String,
+   
+    tag: String,
 
     /**
      * Lượt xem

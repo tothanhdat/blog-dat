@@ -4,17 +4,17 @@ const convertToSlug = require('../constants/utils');
 
 module.exports = class BLOG extends BLOG_COLL {
 
-    static insert({ title, content, image, category, shortDesc }) {
+    static insert({ title, content, image, category, shortDesc, tag }) {
         return new Promise(async resolve => {
             try {
 
-                if (!title || !content || !image || !category || !shortDesc)
+                if (!title || !content || !image || !category || !shortDesc || !tag)
                     return resolve({ error: true, message: 'params_invalid' });
 
                 let slug = convertToSlug(title);
                 console.log({ slug });
 
-                let infoAfterInsert = new BLOG({ title, slug, content, image, category, shortDesc });
+                let infoAfterInsert = new BLOG({ title, slug, content, image, category, shortDesc, tag });
                 let saveDataInsert = await infoAfterInsert.save();
 
                 if (!saveDataInsert) return resolve({ error: true, message: 'cannot_insert' });
@@ -164,7 +164,7 @@ module.exports = class BLOG extends BLOG_COLL {
         })
     }
 
-    static update({ blogID, title, content, image, category, shortDesc }) {
+    static update({ blogID, title, content, image, category, shortDesc, tag }) {
         return new Promise(async resolve => {
             try {
 
@@ -175,7 +175,8 @@ module.exports = class BLOG extends BLOG_COLL {
                     title, 
                     content, 
                     category, 
-                    shortDesc
+                    shortDesc,
+                    tag
                 };
 
                 if(image){
