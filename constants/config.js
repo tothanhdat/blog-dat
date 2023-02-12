@@ -14,7 +14,7 @@ exports.CATEGORY = [
         title: "IT & BA",
         image: "https://imgur.com/G9zEmIR.jpg"
     },
-        {
+    {
         id: 6,
         title: "Tutorial",
         image: "https://dytvr9ot2sszz.cloudfront.net/wp-content/uploads/2019/05/1200x628_logstash-tutorial-min.jpg"

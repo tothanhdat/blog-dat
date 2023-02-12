@@ -43,20 +43,19 @@ const { renderToView }  = require('../utils/childRouting');
     let perPage = 6; 
     
     await BLOG_COLL
-    .find({category: categoryID, status: 1})
-    .sort({ createAt: -1 })
-    .skip((perPage * page) - perPage) // Trong page đầu tiên sẽ bỏ qua giá trị là 0
-    .limit(perPage)
-    .exec((err, products) => {
-        BLOG_COLL
         .find({category: categoryID, status: 1})
-        .countDocuments((err, count) => { // đếm để tính có bao nhiêu trang
-        if (err) return next(err);
-        //res.send(products) // Trả về dữ liệu các sản phẩm theo định dạng như JSON, XML,...
-        renderToView(req, res, 'pages/list-post-category.ejs', {categoryID, products, current: page, pages: Math.ceil(count / perPage)})
+        .sort({ createAt: -1 })
+        .skip((perPage * page) - perPage) // Trong page đầu tiên sẽ bỏ qua giá trị là 0
+        .limit(perPage)
+        .exec((err, products) => {
+            BLOG_COLL
+            .find({category: categoryID, status: 1})
+            .countDocuments((err, count) => { // đếm để tính có bao nhiêu trang
+            if (err) return next(err);
+            //res.send(products) // Trả về dữ liệu các sản phẩm theo định dạng như JSON, XML,...
+            renderToView(req, res, 'pages/list-post-category.ejs', {categoryID, products, current: page, pages: Math.ceil(count / perPage)})
+        });
     });
-    });
-
     
 })
 

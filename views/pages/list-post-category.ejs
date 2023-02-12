@@ -19,10 +19,10 @@
               <header style="margin-top: -3em;" class="entry-header">
                 <h1 class="entry-title"><i>Posts in</i> 
                   <span class="cat-title">
-                    <%let category = categoryID%>
+                    <%let abc = categoryID%>
                     <% CATEGORY.forEach(category => { %>
-                      <% if (category.id == category) { %>
-                            <%=category.title%>
+                      <% if (category.id == abc) { %>
+                            <%=category.title%> 
                       <% } %>
                   <% }) %>               
                   </span>
@@ -55,7 +55,7 @@
                                         <% } %>
                                     <% }) %>
                                     </a>
-                                </span>	 
+                                </span>	
                                 <span class="entry-date">
                                     <time class="entry-date" datetime=""><%=moment(blog.createAt).format('LL'); %></time>
                                 </span>    
