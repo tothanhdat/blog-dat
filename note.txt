@@ -3,3 +3,7 @@ Update blog: localhost:3000/blog/update/id
 pkill node
 git fetch --all
 git reset --hard origin/master
+
+git add .
+git commit -m "d"
+git pull --rebase
