@@ -40,7 +40,7 @@ const { renderToView }  = require('../utils/childRouting');
  route.get('/type/:categoryID', async (req, res, next) => {
     let { categoryID } = req.params;
     let { page } = req.query || 1;
-    let perPage = 6;
+    let perPage = 6; 
     
     await BLOG_COLL
     .find({category: categoryID, status: 1})
