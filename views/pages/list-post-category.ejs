@@ -19,10 +19,10 @@
               <header style="margin-top: -3em;" class="entry-header">
                 <h1 class="entry-title"><i>Posts in</i> 
                   <span class="cat-title">
-                    <%let abc = categoryID%>
+                    <%let category = categoryID%>
                     <% CATEGORY.forEach(category => { %>
-                      <% if (category.id == abc) { %>
-                            <%=category.title%> 
+                      <% if (category.id == category) { %>
+                            <%=category.title%>
                       <% } %>
                   <% }) %>               
                   </span>
