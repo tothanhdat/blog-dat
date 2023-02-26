@@ -151,6 +151,7 @@
             //let image 	    = $('#image').val().trim();
             let _imagePost = $('#image-post')[0].files[0];
             let category 	= $('#category').val().trim();
+            let tag 	    = $('#tag').val().trim();
             let content 	= CKEDITOR.instances['editor'].getData();
 
 		    var formData = new FormData();
@@ -171,7 +172,7 @@
                         var photo = response.data.link;
                         var photo_hash = response.data.deletehash;
 
-                        console.log({ image: photo, title, shortDesc, category, content });
+                        console.log({ image: photo, title, shortDesc, category, content, tag });
 
                         if(!title || !content){
                             return toastr.info('Vui lòng nhập đây đủ!')
@@ -179,7 +180,7 @@
                             $.ajax({
                                 url: `/blog/update/${blogID}`,
                                 method: 'POST',
-                                data: { image: photo, title, shortDesc, category, content },
+                                data: { image: photo, title, shortDesc, category, content, tag },
                                 success: resp => {
                                     console.log({ resp })
                                     if(!resp.error){
