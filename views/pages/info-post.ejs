@@ -339,7 +339,6 @@
             let email = $("#emailCustomer").val();
             let questionContent = $("#comment").val();
             let blogID = $(this).attr('_blogID');
-            console.log({ blogID });
 
             if(!email || !questionContent){
                 return toastr['warning']('Hãy để lại email và nội dung', 'Thông báo');
