@@ -27,8 +27,8 @@ route.post('/register', async (req, res) => {
 
 //API đăng ký account
 route.post('/register-customer', async (req, res) => {
-    let { name, email, questionContent } = req.body;
-    let infoCustomer = await REGISTER_ACCOUNT_MODEL.register({ name, email, questionContent});
+    let { name, email, questionContent, blogID } = req.body;
+    let infoCustomer = await REGISTER_ACCOUNT_MODEL.register({ name, email, questionContent, blogID });
     res.json(infoCustomer)
 });
 

@@ -11,6 +11,7 @@ const checkActive       = require('./utils/checkActive');
 const BLOG_ROUTER       = require('./routes/blog');
 const CATEGORY_ROUTER   = require('./routes/category');
 const USER_ROUTER       = require('./routes/user');
+const ADMIN_ROUTER      = require('./routes/admin');
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
@@ -29,6 +30,7 @@ app.use(expressSession({
 app.use('/blog', BLOG_ROUTER);
 app.use('/category', CATEGORY_ROUTER);
 app.use('/user', USER_ROUTER);
+app.use('/admin', ADMIN_ROUTER);
 
 app.get('/', async (req, res) => {
     renderToView(req, res, 'pages/home.ejs', {})

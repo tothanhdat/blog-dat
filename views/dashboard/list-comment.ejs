@@ -1,0 +1,220 @@
+<% moment.locale('vi')%>
+<%- include ('./header.ejs') %>
+<%- include ('./sidebar.ejs') %>
+
+<style>
+    /* The switch - the box around the slider */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: #2bd019;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2bd019;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+</style>
+           
+            <!-- ============================================================== -->
+            <!-- Start right Content here -->
+            <!-- ============================================================== -->
+            <div class="main-content">
+
+                <div class="page-content">
+                    <div class="container-fluid">
+
+                        <!-- start page title -->
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="page-title-box d-sm-flex align-items-center justify-content-between">
+                                    <h4 class="mb-sm-0 font-size-18">Trang chủ</h4>
+
+                                    <div class="page-title-right">
+                                        <ol class="breadcrumb m-0">
+                                            <li class="breadcrumb-item"><a href="javascript: void(0);">Dashboard</a></li>
+                                            <li class="breadcrumb-item active">Dashboard</li>
+                                        </ol>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <!-- end page title -->
+                        
+                        <div class="row">
+                            <div class="col-xl-12">
+                                <div class="card">
+                                    <div class="card-header align-items-center d-flex">
+                                        <h4 class="card-title mb-0 flex-grow-1">Nhận xét gần đây</h4>
+                                    </div><!-- end card header -->
+
+                                    <div class="card-body">
+                                        <div style="width: 100%;">
+                                            <div class="table-responsive">
+                                                <table id="datatable" class="table table-bordered dt-responsive  nowrap w-100">
+                                                    <thead>
+                                                    <tr>
+                                                        <th>STT</th>
+                                                        <th>Họ tên</th>
+                                                        <th>Email</th>
+                                                        <th>Lời nhận xét</th>
+                                                        <th>Bài viết</th>
+                                                        <th>Ngày tạo</th>
+                                                        <th>Tác vụ</th>
+                                                    </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <% if (listComment && listComment.length) { %>
+                                                            <% listComment.forEach((comment, index) => { %>
+                                                                <tr>
+                                                                    <td><%=index+1 %></td>
+                                                                    <td><a href="" target="_blank"><%=comment.name %></a></td>
+                                                                    <td><%=comment.email %></td>
+                                                                    <td><%=comment.questionContent %></td>
+                                                                    <td><%=comment.blogID.title %></td>
+                                                                    <td><%=moment(comment.createAt).format('L'); %></td>
+                                                                    <td>
+                                                                        <a href="" class="btn btn-outline-secondary btn-sm btnRemove" title="Xóa">
+                                                                            <i class="fas fa-trash-alt"></i>
+                                                                        </a>
+                                                                    </td>
+                                                                </tr>
+                                                            <% }) %>
+                                                        <% }else{%>
+        
+                                                        <% } %>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                        
+        
+                                    </div>
+
+                                    <!-- end card body -->
+                                </div>
+                                <!-- end card -->
+                            </div>
+                            <!-- end col -->
+                        </div><!-- end row -->
+                        <div class="row">
+                            <div class="col-xl-6">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h4 class="card-title">Ratio video 16:9</h4>
+                                        <p class="card-title-desc">Vừa học vừa nghe nhạc thích lắm ạ. Khá thư giãn.</p>
+                                    </div><!-- end card header -->
+
+                                    <div class="card-body">
+                                        <!-- 16:9 aspect ratio -->
+                                        <div class="ratio ratio-16x9">
+                                            <iframe src="https://www.youtube.com/embed/syvz6eOcSv0" title="YouTube video" allowfullscreen=""></iframe>
+                                        </div>
+                                    </div><!-- end card-body -->
+                                </div><!-- end card -->
+                            </div><!-- end col -->
+
+                            <div class="col-xl-6">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h4 class="card-title">11 bài hát lofi tâm trạng cho buổi tối</h4>
+                                        <p class="card-title-desc">Vừa học vừa nghe nhạc thích lắm ạ. Khá thư giãn.</p>
+                                    </div><!-- end card header -->
+
+                                    <div class="card-body">
+                                        <!-- 21:9 aspect ratio -->
+                                        <div class="ratio ratio-21x9">
+                                            <iframe src="https://www.youtube.com/embed/hN_WYq1kVtM" title="YouTube video" allowfullscreen=""></iframe>
+                                        </div>
+
+                                    </div><!-- end card-body -->
+                                </div><!-- end card -->
+                            </div><!-- end col -->
+
+                        </div>
+                    </div>
+                    <!-- container-fluid -->
+                </div>
+                <!-- End Page-content -->
+
+
+                <footer class="footer">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <script>document.write(new Date().getFullYear())</script> © Minia.
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="text-sm-end d-none d-sm-block">
+                                    Design & Develop by <a href="#!" class="text-decoration-underline">Themesbrand</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </footer>
+            </div>
+            <!-- end main content-->
+
+        </div>
+        <!-- END layout-wrapper -->
+
+<%- include ('./footer.ejs') %>
+
+<script>
+    
+</script>
+        
+        

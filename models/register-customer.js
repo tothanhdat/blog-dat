@@ -29,7 +29,7 @@ myOAuth2Client.setCredentials({
 
 module.exports = class REGISTER_CUSTOMER extends REGISTER_CUSTOMER_COLL {
 
-    static register({ name, email, questionContent }) {
+    static register({ name, email, questionContent, blogID }) {
         return new Promise(async resolve => {
             try {
 
@@ -37,10 +37,10 @@ module.exports = class REGISTER_CUSTOMER extends REGISTER_CUSTOMER_COLL {
                     return resolve({ error: true, message: 'Vui lòng nhập email' });
                 }
 
-                // let accountExisted = await REGISTER_CUSTOMER.findOne({email});
+                let accountExisted = await REGISTER_CUSTOMER.findOne({ email, blogID });
 
-                // if(accountExisted)
-                //     return resolve({ error: true, code: 400, message: 'Bạn đã đăng ký email này' });
+                if(accountExisted)
+                    return resolve({ error: true, code: 400, message: 'Bạn đã để lại bình luận trước đó' });
 
                 // bot.onText(/\/echo (.+)/, (msg, match) => {
                 
@@ -62,7 +62,7 @@ module.exports = class REGISTER_CUSTOMER extends REGISTER_CUSTOMER_COLL {
 
                 // console.log("==============3==========");
 
-                let infoAfterInsert = new REGISTER_CUSTOMER({ name, email, questionContent });
+                let infoAfterInsert = new REGISTER_CUSTOMER({ name, email, questionContent, blogID });
                 let saveDataInsert = await infoAfterInsert.save();
 
                 if (!saveDataInsert) return resolve({ error: true, message: 'Lỗi hệ thống' });
@@ -77,11 +77,15 @@ module.exports = class REGISTER_CUSTOMER extends REGISTER_CUSTOMER_COLL {
     static getList() {
         return new Promise(async resolve => {
             try {
-                let listAccountRegister = await REGISTER_CUSTOMER.find().sort({ createAt: -1 });
+                let listComment = await REGISTER_CUSTOMER.find().sort({ createAt: -1 })
+                .populate({ 
+                    path: 'blogID', 
+                    select: 'title' 
+                });
                 
-                if (!listAccountRegister) return resolve({ error: true, message: 'cannot_get_list' });
+                if (!listComment) return resolve({ error: true, message: 'cannot_get_list' });
 
-                return resolve({ error: false, data: listAccountRegister });
+                return resolve({ error: false, data: listComment });
 
             } catch (error) {
 
@@ -96,8 +100,6 @@ module.exports = class REGISTER_CUSTOMER extends REGISTER_CUSTOMER_COLL {
 
                 let listCustomer = await REGISTER_CUSTOMER_COLL.find();
                 let listEmail = listCustomer.map(item => item.email);
-
-                console.log({ listEmail });
 
                 listEmail && listEmail.length && listEmail.forEach(async email => {
 

@@ -1,3 +1,4 @@
+const { ObjectId } = require('mongodb');
 const mongoose = require('mongoose');
 const Schema   = mongoose.Schema;
 
@@ -8,6 +9,8 @@ const registerCustomer = new Schema({
     email: String,
 
     questionContent: String,
+
+    blogID: { type: Schema.Types.ObjectId, ref: 'blog' },
 
     createAt: { type: Date, required: true, default: Date.now },
   

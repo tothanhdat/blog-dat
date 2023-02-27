@@ -14,7 +14,7 @@
     <meta property="og:image"              content="<%=infoBlog.image %>" />
     
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="title" content="Blog của Đạt">
+    <meta name="title" content="<%=infoBlog.title%>">
     <meta name="description" content="<%=infoBlog.shortDesc%>">
 
     <meta name="keywords" content="<%=infoBlog.tag || 'tothanhdat, blog itba, blog business analyst, blog product onwer'%>">
@@ -291,7 +291,7 @@
                                       <p class="form-allowed-tags">You may use these <abbr title="HyperText Markup Language">HTML</abbr> tags and attributes: <code>&lt;a href="" title=""&gt; &lt;abbr title=""&gt; &lt;acronym title=""&gt; &lt;b&gt; &lt;blockquote cite=""&gt; &lt;cite&gt; &lt;code&gt; &lt;del datetime=""&gt; &lt;em&gt; &lt;i&gt; &lt;q cite=""&gt; &lt;strike&gt; &lt;strong&gt; </code></p>
                                       
                                       <p class="form-submit">
-                                        <input type="submit" name="submit" id="btnComment" class="button primary" value="Bình luận">
+                                        <input type="submit" name="submit" id="btnComment" _blogID="<%=infoBlog._id%>" class="button primary" value="Bình luận">
                                       </p>
                                       
                                     </form>
@@ -338,6 +338,8 @@
             let name = $("#nameCustomer").val();
             let email = $("#emailCustomer").val();
             let questionContent = $("#comment").val();
+            let blogID = $(this).attr('_blogID');
+            console.log({ blogID });
 
             if(!email || !questionContent){
                 return toastr['warning']('Hãy để lại email và nội dung', 'Thông báo');
@@ -350,16 +352,17 @@
             $.ajax({
                 url: `/user/register-customer`,
                 method: 'POST',
-                data: {name, email, questionContent},
+                data: {name, email, questionContent, blogID},
                 success: resp => {
                     //console.log({ resp });
                     if(!resp.error){
                         toastr['success']('Bình luận của bạn đã được gửi đi.', 'Xin Cảm ơn ^^');
+                        $("#btnComment").hide();
                         setTimeout(() => {
                             return toastr['success']('Bạn sẽ nhận được phản hồi sớm nhất từ mình nhé ^^', 'Thông báo');
                         }, 5000);
                     }else{
-                        return toastr['error']('Đã xảy ra lỗi', 'Thông báo');
+                        return toastr['warning'](resp.message, 'Thông báo');
                     }
                 },
                 error: err => console.log({ err })
