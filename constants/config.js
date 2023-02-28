@@ -2,7 +2,7 @@ exports.CATEGORY = [
     {
         id: 2,
         title: "Vu vơ",
-        image: "https://imgur.com/cEhyfoT.jpg"
+        image: "https://imgur.com/xnPzCVv.jpg"
     },
     // {
     //     id: 3,
@@ -12,12 +12,12 @@ exports.CATEGORY = [
     {
         id: 5,
         title: "IT & BA",
-        image: "https://imgur.com/G9zEmIR.jpg"
+        image: "https://i.imgur.com/HrbZCWz.jpg"
     },
     {
         id: 6,
         title: "Tutorial",
-        image: "https://dytvr9ot2sszz.cloudfront.net/wp-content/uploads/2019/05/1200x628_logstash-tutorial-min.jpg"
+        image: "https://i.imgur.com/YzpKZhH.jpg"
     },
     // {
     //     id: 4,
