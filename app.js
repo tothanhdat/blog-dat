@@ -4,6 +4,7 @@ const app               = express();
 const bodyParser        = require('body-parser');
 const mongoose          = require('mongoose');
 const expressSession    = require('express-session');
+const path              = require('path')
 
 const { renderToView }  = require('./utils/childRouting');
 const checkActive       = require('./utils/checkActive');
@@ -19,6 +20,23 @@ app.use(bodyParser.json());
 app.use(express.static('./public'));
 app.set('view engine', 'ejs');
 app.set('views', './views');
+
+var options = {
+    etag: false,
+    // extensions: ['htm', 'html'],
+    // index: false,
+    // maxAge: '1d',
+    redirect: false,
+    setHeaders: function (res, path, stat) {
+      res.set({
+        'x-timestamp': Date.now(),
+        'dat': 'hi',
+        'Cache-Control': 'public, max-age: 3600'
+      })
+    }
+  }
+  
+  app.use(express.static('public', options))
 
 app.use(expressSession({
     resave: true, 
