@@ -12,7 +12,7 @@ module.exports = class BLOG extends BLOG_COLL {
                     return resolve({ error: true, message: 'params_invalid' });
 
                 let slug = convertToSlug(title);
-                console.log({ slug });
+                //console.log({ slug });
 
                 let infoAfterInsert = new BLOG({ title, slug, content, image, category, shortDesc, tag });
                 let saveDataInsert = await infoAfterInsert.save();
