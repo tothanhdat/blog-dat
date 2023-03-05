@@ -42,13 +42,13 @@
                                 <article class="hentry post has-post-thumbnail slideUp" style="position: absolute; left: 0px; top: 0px; width: 49.8947%; box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;">
                                     <!-- .featured-image -->
                                     <div class="featured-image">
-                                        <a href="/blog/bai-viet/<%=blog.slug %>"><img style="flex-shrink: 0; min-width: 100%; max-height: 240px; object-fit: cover;" width="1440" height="1440" src="<%=blog.image%>" alt="blog-image"></a>
+                                        <a href="/blog/<%=blog.slug %>"><img style="flex-shrink: 0; min-width: 100%; max-height: 240px; object-fit: cover;" width="1440" height="1440" src="<%=blog.image%>" alt="blog-image"></a>
                                     </div>
                                     
                                     <header class="entry-header">
                                         
                                         <!-- .entry-title -->
-                                        <h2 class="entry-title"><a href="/blog/bai-viet/<%=blog.slug %>"><%=blog.title%></a></h2>
+                                        <h2 class="entry-title"><a href="/blog/<%=blog.slug %>"><%=blog.title%></a></h2>
                                         
                                         
                                         <!-- .entry-meta -->
@@ -66,7 +66,7 @@
                                                 <time class="entry-date" datetime=""><%=moment(blog.createAt).format('L'); %></time>
                                             </span>    
                                             <span>
-                                                <a href="/blog/bai-viet/<%=blog.slug %>"><%=blog.views%> Lượt xem</a>
+                                                <a href="/blog/<%=blog.slug %>"><%=blog.views%> Lượt xem</a>
                                             </span>
                                         </div>
                                         <!-- .entry-meta -->
@@ -79,7 +79,7 @@
                                     <div class="entry-content">
                                         <p><%=blog.shortDesc ? blog.shortDesc.slice(0, 190).concat('...') : `Ở đây sẽ hiện short description Ở đây sẽ hiện short description Ở đây sẽ hiện short description Ở đây sẽ hiện short description Ở đây sẽ hiện short description...` %> 
                                             <span class="more">
-                                                <a href="/blog/bai-viet/<%=blog.slug %>" class="more-link">Đọc thêm</a>
+                                                <a href="/blog/<%=blog.slug %>" class="more-link">Đọc thêm</a>
                                             </span>
                                         </p>
                                     </div>
@@ -90,7 +90,7 @@
                         </div>
                     </div>
                     <div style="margin-top: 10px;" class="home-launch">
-                        <a class="button" href="/category">Xem tất cả</a>
+                        <a class="button" href="/category?page=2">Xem thêm</a>
                     </div> 
                     </div>
                 </div>

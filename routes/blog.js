@@ -49,24 +49,24 @@ route.get('/list-post-trending', async (req, res) => {
 })
 
 
-route.get('/:blogID', async (req, res) => {
-    let { blogID } = req.params;
-    let infoBlog = await BLOG_MODEL.getInfo({ blogID, views: 1 })
-    // res.render('pages/info-post', { 
-    //     infoBlog: infoBlog.data, 
-    //     moment, 
-    //     CATEGORY,
-    //     nextPost: infoBlog.nextPost,
-    //     previousPost: infoBlog.previousPost,
-    // })
-    renderToView(req, res, 'pages/info-post', {
-        infoBlog: infoBlog.data, 
-        // nextPost: infoBlog.nextPost,
-        // previousPost: infoBlog.previousPost,
-    })
-})
+// route.get('/:blogID', async (req, res) => {
+//     let { blogID } = req.params;
+//     let infoBlog = await BLOG_MODEL.getInfo({ blogID, views: 1 })
+//     // res.render('pages/info-post', { 
+//     //     infoBlog: infoBlog.data, 
+//     //     moment, 
+//     //     CATEGORY,
+//     //     nextPost: infoBlog.nextPost,
+//     //     previousPost: infoBlog.previousPost,
+//     // })
+//     renderToView(req, res, 'pages/info-post', {
+//         infoBlog: infoBlog.data, 
+//         // nextPost: infoBlog.nextPost,
+//         // previousPost: infoBlog.previousPost,
+//     })
+// })
 
-route.get('/bai-viet/:slug', async (req, res) => {
+route.get('/:slug', async (req, res) => {
     let { slug } = req.params;
     
     let infoBlog = await BLOG_MODEL.getInfoBySlug({ slug, views: 1 });
