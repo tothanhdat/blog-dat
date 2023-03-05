@@ -223,7 +223,7 @@ input:checked + .slider:before {
                                                             <% listBlogDashboard.forEach((blog, index) => { %>
                                                                 <tr>
                                                                     <td><%=index+1 %></td>
-                                                                    <td><a href="/blog/<%=blog._id%>" target="_blank"><%=blog.title %></a></td>
+                                                                    <td><a href="/blog/<%=blog.slug%>" target="_blank"><%=blog.title %></a></td>
                                                                     <% CATEGORY.forEach(category => { %>
                                                                         <% if (category.id == blog.category) { %>
                                                                               <td><%=category.title%></td>

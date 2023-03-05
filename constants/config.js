@@ -1,6 +1,7 @@
 exports.CATEGORY = [
     {
         id: 2,
+        slug: 'vu-vo',
         title: "Vu vơ",
         image: "https://imgur.com/xnPzCVv.jpg"
     },
@@ -11,11 +12,13 @@ exports.CATEGORY = [
     // },
     {
         id: 5,
+        slug: 'it-ba',
         title: "IT & BA",
         image: "https://i.imgur.com/HrbZCWz.jpg"
     },
     {
         id: 6,
+        slug: 'tutorial',
         title: "Tutorial",
         image: "https://i.imgur.com/YzpKZhH.jpg"
     },
