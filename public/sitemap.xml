@@ -6,150 +6,101 @@
             http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
 <!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
 
+
 <url>
   <loc>https://tothanhdat.com/</loc>
-  <lastmod>2023-02-28T07:30:32+00:00</lastmod>
+  <lastmod>2023-03-05T13:53:16+00:00</lastmod>
   <priority>1.00</priority>
 </url>
 <url>
-  <loc>https://tothanhdat.com/blog/62b9d312bef55b7a0c83084e</loc>
-  <lastmod>2023-02-28T07:30:32+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
   <loc>https://tothanhdat.com/category/type/2</loc>
-  <lastmod>2023-02-28T07:30:32+00:00</lastmod>
+  <lastmod>2023-03-05T13:53:16+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://tothanhdat.com/category/type/5</loc>
-  <lastmod>2023-02-28T07:30:32+00:00</lastmod>
+  <lastmod>2023-03-05T13:53:16+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://tothanhdat.com/category/type/6</loc>
-  <lastmod>2023-02-28T07:30:32+00:00</lastmod>
+  <lastmod>2023-03-05T13:53:16+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://tothanhdat.com/blog/10-techniques-quan-trong-cua-business-analyst-phan-1</loc>
-  <lastmod>2023-02-28T07:30:32+00:00</lastmod>
+  <lastmod>2023-03-05T13:53:16+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://tothanhdat.com/blog/active-ban-quyen-windows-microsoft-office-365-mien-phi</loc>
-  <lastmod>2023-02-28T07:30:32+00:00</lastmod>
+  <lastmod>2023-03-05T13:53:16+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://tothanhdat.com/blog/hanh-trinh-tu-mot-developer-tro-thanh-mot-business-analyst</loc>
-  <lastmod>2023-02-28T07:30:32+00:00</lastmod>
+  <lastmod>2023-03-05T13:53:16+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://tothanhdat.com/blog/11-stakeholders-trong-du-an-ma-ba-can-phai-biet</loc>
-  <lastmod>2023-02-28T07:30:32+00:00</lastmod>
+  <lastmod>2023-03-05T13:53:16+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://tothanhdat.com/blog/baccm-su-ra-doi-cua-nghe-ba</loc>
-  <lastmod>2023-02-28T07:30:32+00:00</lastmod>
+  <lastmod>2023-03-05T13:53:16+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://tothanhdat.com/blog/ba-co-can-phai-biet-git-khong</loc>
-  <lastmod>2023-02-28T07:30:32+00:00</lastmod>
+  <lastmod>2023-03-05T13:53:16+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://tothanhdat.com/category</loc>
-  <lastmod>2023-02-28T07:30:32+00:00</lastmod>
+  <loc>https://tothanhdat.com/category?page=2</loc>
+  <lastmod>2023-03-05T13:53:16+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://tothanhdat.com/blog/about-me</loc>
-  <lastmod>2023-02-28T07:30:32+00:00</lastmod>
+  <lastmod>2023-03-05T13:53:16+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://tothanhdat.com/category/type/2?page=1</loc>
-  <lastmod>2023-02-28T07:30:32+00:00</lastmod>
+  <lastmod>2023-03-05T13:53:16+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://tothanhdat.com/blog/quy-trinh-phat-trien-phan-mem</loc>
-  <lastmod>2023-02-28T07:30:32+00:00</lastmod>
+  <lastmod>2023-03-05T13:53:16+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://tothanhdat.com/blog/cac-vai-tro-trong-quy-trinh-phat-trien-phan-mem</loc>
-  <lastmod>2023-02-28T07:30:32+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://tothanhdat.com/blog/63fb9476aa416ea00f518441</loc>
-  <lastmod>2023-02-28T07:30:32+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://tothanhdat.com/blog/63d6297d0947a806905e9673</loc>
-  <lastmod>2023-02-28T07:30:32+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://tothanhdat.com/blog/639d6e979f24c6acfe42474a</loc>
-  <lastmod>2023-02-28T07:30:32+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://tothanhdat.com/blog/638fa23ecf94792195ef9856</loc>
-  <lastmod>2023-02-28T07:30:32+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://tothanhdat.com/blog/62dbcbfb750c72222be38315</loc>
-  <lastmod>2023-02-28T07:30:32+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://tothanhdat.com/blog/62d8ed9a9c38f4f10c00a464</loc>
-  <lastmod>2023-02-28T07:30:32+00:00</lastmod>
+  <lastmod>2023-03-05T13:53:16+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://tothanhdat.com/category/type/5?page=1</loc>
-  <lastmod>2023-02-28T07:30:32+00:00</lastmod>
+  <lastmod>2023-03-05T13:53:16+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://tothanhdat.com/category/type/5?page=2</loc>
-  <lastmod>2023-02-28T07:30:32+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://tothanhdat.com/blog/63e92cf6ef902a6ab2afba98</loc>
-  <lastmod>2023-02-28T07:30:32+00:00</lastmod>
+  <lastmod>2023-03-05T13:53:16+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://tothanhdat.com/category/type/6?page=1</loc>
-  <lastmod>2023-02-28T07:30:32+00:00</lastmod>
+  <lastmod>2023-03-05T13:53:16+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://tothanhdat.com/category?page=1</loc>
-  <lastmod>2023-02-28T07:30:32+00:00</lastmod>
+  <lastmod>2023-03-05T13:53:16+00:00</lastmod>
   <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://tothanhdat.com/category?page=2</loc>
-  <lastmod>2023-02-28T07:30:32+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://tothanhdat.com/blog/6325d2d9c33db2fe0603687c</loc>
-  <lastmod>2023-02-28T07:30:32+00:00</lastmod>
-  <priority>0.51</priority>
 </url>
 
 
