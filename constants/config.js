@@ -3,7 +3,7 @@ exports.CATEGORY = [
         id: 2,
         slug: 'vu-vo',
         title: "Vu vơ",
-        image: "https://imgur.com/xnPzCVv.jpg"
+        image: "https://imgur.com/dvp55sa.jpg"
     },
     // {
     //     id: 3,
@@ -14,13 +14,13 @@ exports.CATEGORY = [
         id: 5,
         slug: 'it-ba',
         title: "IT & BA",
-        image: "https://i.imgur.com/HrbZCWz.jpg"
+        image: "https://imgur.com/WkNZiQH.jpg"
     },
     {
         id: 6,
         slug: 'tutorial',
         title: "Tutorial",
-        image: "https://i.imgur.com/YzpKZhH.jpg"
+        image: "https://imgur.com/cFq2D5x.jpg"
     },
     // {
     //     id: 4,
