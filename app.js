@@ -13,6 +13,7 @@ const BLOG_ROUTER       = require('./routes/blog');
 const CATEGORY_ROUTER   = require('./routes/category');
 const USER_ROUTER       = require('./routes/user');
 const ADMIN_ROUTER      = require('./routes/admin');
+const LEARNING_ROUTER   = require('./routes/learning');
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
@@ -28,11 +29,14 @@ var options = {
     // maxAge: '1d',
     redirect: false,
     setHeaders: function (res, path, stat) {
-      res.set({
-        'x-timestamp': Date.now(),
-        'dat': 'hi',
-        'Cache-Control': 'public, max-age: 3600'
-      })
+    //   res.set({
+    //     'x-timestamp': Date.now(),
+    //     'dat': 'hi',
+    //     'Cache-Control': 'public, max-age: 3600'
+    //   })
+        res.setHeader("Cache-Control","max-age=" + 365 * 24 * 60 * 60);//Cache for a year
+        res.removeHeader("Pragma");
+        res.removeHeader("Expires");
     }
   }
   
@@ -49,6 +53,8 @@ app.use('/blog', BLOG_ROUTER);
 app.use('/category', CATEGORY_ROUTER);
 app.use('/user', USER_ROUTER);
 app.use('/admin', ADMIN_ROUTER);
+app.use('/learning', LEARNING_ROUTER);
+
 
 app.get('/', async (req, res) => {
     renderToView(req, res, 'pages/home.ejs', {})
@@ -80,9 +86,9 @@ app.get('/logout', function(req, res){
 });
 
 //Dẫn đến page 404
-app.use(function(req, res, next){
-    res.status(404).render('pages/page-404', {title: "Sorry, page not found"});
-});
+// app.use(function(req, res, next){
+//     res.status(404).render('pages/page-404', {title: "Sorry, page not found"});
+// });
 
 const PORT = process.env.PORT || 3000;
 

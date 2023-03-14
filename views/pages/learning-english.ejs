@@ -1,0 +1,72 @@
+<%- include ('./header.ejs') %>
+<style>
+
+
+    /* Center the content */
+    .main-content {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: #eee;
+    }
+    
+    /* Add a frame around the content */
+    .frame {
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      background-color: #fff;
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    }
+    
+    /* Style the word and its meaning */
+    h2, p {
+      color: #333;
+      font-size: 18px;
+      margin: 0;
+    }
+
+    @media (max-width: 400px) {
+        .frame {
+            width: 350px;
+        }
+    }
+
+    /* .reload-button {
+        display: inline-block;
+        background-color: #4c91af;
+        color: white;
+        padding: 10px 20px;
+        font-size: 12px;
+        text-align: center;
+        text-decoration: none;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        }
+
+    .reload-button:hover {
+        background-color: #49c9d7;
+    } */
+  </style>
+
+<body>
+    <!-- <div class="layout-medium"> 
+        <div id="primary" class="content-area">
+            <div id="content" class="site-content" role="main">
+                
+            </div>
+        </div>
+    </div> -->
+    <div class="main-content">
+        <div class="frame">
+            <h2>Mỗi ngày học một từ mới - Study with Đạt ( •̀ ω •́ )✧</h2>
+            <pre style="font-size: 13px;"><%=contentShall%></pre>
+            <!-- <button class="reload-button">Tải lại</button> -->
+            <!-- <p style="font-size: 12px; color: #4e4e4e;">Lưu ý: Mình tích hợp thuật toán của chatGPT nên đôi khi sẽ sảy ra một vài lỗi không như ý muốn.</p> -->
+        </div>
+    </div>
+</body>
+  
+<%- include ('./footer.ejs') %>
