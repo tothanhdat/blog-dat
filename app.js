@@ -98,7 +98,7 @@ app.get('/logout', function(req, res){
 
 const PORT = process.env.PORT || 3000;
 
-const uri = 'mongodb://localhost/blogtodat';
+const uri = 'mongodb://localhost:27017/blogtodat';
 
 mongoose.connect(process.env.DATABASE, { useNewUrlParser: true });
 mongoose.connection.once('open', () => {
