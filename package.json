@@ -19,6 +19,7 @@
     "nodemailer": "^6.8.0",
     "nodemon": "^2.0.18",
     "openai": "^3.2.1",
+    "replicate": "^0.12.1",
     "yarn": "^1.22.19"
   }
 }
