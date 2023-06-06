@@ -4,7 +4,8 @@ const express           = require('express');
 const app               = express();
 const bodyParser        = require('body-parser');
 const mongoose          = require('mongoose');
-const expressSession    = require('express-session');
+// const expressSession    = require('express-session');
+const expressSession    = require('cookie-session');
 const path              = require('path')
 
 const { renderToView }  = require('./utils/childRouting');
