@@ -44,6 +44,8 @@ var options = {
   
 app.use(express.static('public', options))
 
+//-momery unleaked---------
+app.set('trust proxy', 1);
 app.use(expressSession({
     resave: true, 
     saveUninitialized: true, 
