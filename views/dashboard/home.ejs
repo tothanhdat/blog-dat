@@ -252,7 +252,7 @@ input:checked + .slider:before {
                                                                     </td>
                                                                     <td><%=moment(blog.createAt).format('L'); %></td>
                                                                     <td>
-                                                                        <a href="/blog/remove/<%=blog._id%>" class="btn btn-outline-secondary btn-sm btnRemove" title="Xóa">
+                                                                        <a href="" class="btn btn-outline-secondary btn-sm btnRemove" _blogID="<%=blog._id%>" title="Xóa">
                                                                             <i class="fas fa-trash-alt"></i>
                                                                         </a>
                                                                         <a href="/blog/update/<%=blog._id%>" style="margin-left: 10px;" class="btn btn-outline-secondary btn-sm btnEdit" title="Chỉnh sửa">
@@ -342,42 +342,63 @@ input:checked + .slider:before {
 <%- include ('./footer.ejs') %>
 
 <script>
-    $(".switch").on('change', function() {
-        let blogID = $(this).attr("_blogID");
-        if ($(this).find('input').is(':checked')) {
-            $.ajax({
-                url: `/blog/update-status/${blogID}`,
-                method: 'POST',
-                data: { status: 1 },
-                success: resp => {
-                    console.log({ resp })
-                    if(!resp.error){
-                        toastr['success']('Bài viết đã được bật', 'Thông báo');
-                    }else{
-                        return toastr['error']('Thất bại', 'Thông báo');
-                    }
-                },
-                error: err => console.log({ err })
-            });
-        }
-        else {
-            //close
-            $.ajax({
-                url: `/blog/update-status/${blogID}`,
-                method: 'POST',
-                data: { status: 0 },
-                success: resp => {
-                    console.log({ resp })
-                    if(!resp.error){
-                        toastr['success']('Bài viết đã được tắt', 'Thông báo');
-                    }else{
-                        return toastr['error']('Thất bại', 'Thông báo');
-                    }
-                },
-                error: err => console.log({ err })
-            });
-        }
+    
+    $(document).ready(function () {
+
+        $(".switch").on('change', function() {
+            let blogID = $(this).attr("_blogID");
+            if ($(this).find('input').is(':checked')) {
+                $.ajax({
+                    url: `/blog/update-status/${blogID}`,
+                    method: 'POST',
+                    data: { status: 1 },
+                    success: resp => {
+                        console.log({ resp })
+                        if(!resp.error){
+                            toastr['success']('Bài viết đã được bật', 'Thông báo');
+                        }else{
+                            return toastr['error']('Thất bại', 'Thông báo');
+                        }
+                    },
+                    error: err => console.log({ err })
+                });
+            }
+            else {
+                //close
+                $.ajax({
+                    url: `/blog/update-status/${blogID}`,
+                    method: 'POST',
+                    data: { status: 0 },
+                    success: resp => {
+                        console.log({ resp })
+                        if(!resp.error){
+                            toastr['success']('Bài viết đã được tắt', 'Thông báo');
+                        }else{
+                            return toastr['error']('Thất bại', 'Thông báo');
+                        }
+                    },
+                    error: err => console.log({ err })
+                });
+            }
+        });
+
+        $(".btnRemove").on("click", function (e) {
+            e.preventDefault();
+            
+            var blogID =  $(this).attr("_blogID");
+            console.log(blogID);
+
+            // Hiển thị hộp thoại xác nhận
+            var isConfirmed = confirm("Bạn có chắc chắn muốn xóa bài viết này?");
+            
+            // Nếu admin xác nhận, thực hiện xóa bài viết
+            if (isConfirmed) {
+                window.location.href = "/blog/remove/" + blogID;
+            }
+        });
+        
     });
+            
 </script>
         
         

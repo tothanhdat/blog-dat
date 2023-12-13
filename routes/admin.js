@@ -9,6 +9,4 @@ route.get('/list-comment', async (req, res) => {
     })
 })
 
-
-
 module.exports = route;

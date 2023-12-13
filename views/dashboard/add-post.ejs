@@ -133,65 +133,38 @@
         $(document).on('click', '.add-post', function(e) {
             e.preventDefault();
 
-            let _imagePost = $('#image-post')[0].files[0];
-
-            let title       = $('#title').val().trim();
-            //let image 	    = $('#image').val().trim();
-            let shortDesc 	= $('.shortDesc').val().trim();
-            let category 	= $('#category').val().trim();
-            let tag 	    = $('#tag').val().trim();
-            let content 	= CKEDITOR.instances['editor'].getData();
-
-		    var formData = new FormData();
-            // formData.append('title', title);
-            // formData.append('shortDesc', shortDesc);
-            // formData.append('category', category);
-            // formData.append('content', content);
-            formData.append('image', _imagePost);
+            let formData = new FormData();
+            formData.append('image', $('#image-post')[0].files[0]);
+            formData.append('title', $('#title').val().trim());
+            formData.append('shortDesc', $('.shortDesc').val().trim());
+            formData.append('category', $('#category').val().trim());
+            formData.append('tag', $('#tag').val().trim());
+            formData.append('content', CKEDITOR.instances['editor'].getData());
 
             $.ajax({
-                url: "https://api.imgur.com/3/image",
-                type: "POST",
-                datatype: "json",
-                headers: {
-                "Authorization": "Client-ID 1059a795be32ee2"
-                },
+                url: `/blog/add`,
+                method: 'POST',
                 data: formData,
-                success: function(response) {
-                    console.log({ response });
-                    var photo = response.data.link;
-                    var photo_hash = response.data.deletehash;
-
-                    console.log({ image: photo, title, shortDesc, category, content, tag });
-
-                    if(!title || !photo || !category || !content || !shortDesc || !tag){
-                        return toastr.info('Vui lòng nhập đây đủ!')
-                    } else{
-                        $.ajax({
-                            url: `/blog/add`,
-                            method: 'POST',
-                            data: { image: photo, title, shortDesc, category, content, tag },
-                            success: resp => {
-                                console.log({ resp })
-                                if(!resp.error){
-                                    toastr['success']('Thêm bài viết thành công', 'Thông báo');
-                                    setTimeout(() => {
-                                        location.href = `/dashboard`
-                                    }, 500);
-                                }else{
-                                    return toastr['error']('Thêm bài viết thất bại', 'Thông báo');
-                                }
-                            },
-                            error: err => console.log({ err })
-                        });
+                processData: false,  // Important: tell jQuery not to process the data
+                contentType: false,  // Important: tell jQuery not to set contentType
+                success: resp => {
+                    console.log('FormData:', formData);
+                    console.log('Response:', resp);
+                    
+                    if (!resp.error) {
+                        toastr['success']('Thêm bài viết thành công', 'Thông báo');
+                        setTimeout(() => {
+                            location.href = `/dashboard`;
+                        }, 500);
+                    } else {
+                        toastr['error']('Thêm bài viết thất bại', 'Thông báo');
                     }
                 },
-                cache: false,
-                contentType: false,
-                processData: false
+                error: err => console.log({ err }),
+                enctype: 'multipart/form-data'
             });
-            //return console.log({ title, shortDesc, category, content, _imagePost });
-        })
+        });
+
 
         $('#image-post').change(function(){
             var input = this;
@@ -213,5 +186,3 @@
     })
     
 </script>
-        
-        

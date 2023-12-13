@@ -39,10 +39,10 @@ route.get('/list-customer', async (req, res) => {
 });
 
 //API gửi email
-route.post('/send-email', async (req, res) => {
-    let { title, content } = req.body;
-    let actionSendEmail = await REGISTER_ACCOUNT_MODEL.sendEmail({ title, content });
-    res.json(actionSendEmail)
-});
+// route.post('/send-email', async (req, res) => {
+//     let { title, content } = req.body;
+//     let actionSendEmail = await REGISTER_ACCOUNT_MODEL.sendEmail({ title, content });
+//     res.json(actionSendEmail)
+// });
 
 module.exports = route;

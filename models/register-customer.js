@@ -1,31 +1,15 @@
 const ObjectID = require('mongoose').Types.ObjectId;
 const REGISTER_CUSTOMER_COLL = require('../database/register-customer-coll');
 const nodemailer = require("nodemailer");
-const { OAuth2Client  } = require('google-auth-library');
+// const { OAuth2Client  } = require('google-auth-library');
 // const TelegramBot = require('node-telegram-bot-api');
 
 require('dotenv').config();
 
-const CLIENT_ID = process.env.CLIENT_EMAIL_ID;
-const CLIENT_SECRET = process.env.CLIENT_EMAIL_SECRET;
-// const REDIRECT_URI = process.env.REDIRECT_URI
-const REFRESH_TOKEN = process.env.REFRESH_TOKEN;
-const PASSWORD_EMAIL = process.env.PASSWORD_EMAIL;
-const TOKEN_TELEGRAM = '5920362563:AAErtHRja5JWUfqWACpWZwqg1QOacJ-Hslg';
-
-// const token = TOKEN_TELEGRAM;
-// const bot = new TelegramBot(token, {polling: true});
-
-
-const myOAuth2Client = new OAuth2Client(
-    CLIENT_ID,
-    CLIENT_SECRET
-)
-
-// Set Refresh Token vào OAuth2Client Credentials
-myOAuth2Client.setCredentials({
-    refresh_token: REFRESH_TOKEN
-})
+// const CLIENT_ID = process.env.CLIENT_EMAIL_ID;
+// const CLIENT_SECRET = process.env.CLIENT_EMAIL_SECRET;
+// const REFRESH_TOKEN = process.env.REFRESH_TOKEN;
+// const PASSWORD_EMAIL = process.env.PASSWORD_EMAIL;
 
 module.exports = class REGISTER_CUSTOMER extends REGISTER_CUSTOMER_COLL {
 
@@ -94,49 +78,49 @@ module.exports = class REGISTER_CUSTOMER extends REGISTER_CUSTOMER_COLL {
         })
     }
 
-    static sendEmail({ title, content }) {
-        return new Promise(async resolve => {
-            try {
+    // static sendEmail({ title, content }) {
+    //     return new Promise(async resolve => {
+    //         try {
 
-                let listCustomer = await REGISTER_CUSTOMER_COLL.find();
-                let listEmail = listCustomer.map(item => item.email);
+    //             let listCustomer = await REGISTER_CUSTOMER_COLL.find();
+    //             let listEmail = listCustomer.map(item => item.email);
 
-                listEmail && listEmail.length && listEmail.forEach(async email => {
+    //             listEmail && listEmail.length && listEmail.forEach(async email => {
 
-                    const myAccessTokenObject = await myOAuth2Client.getAccessToken()
+    //                 const myAccessTokenObject = await myOAuth2Client.getAccessToken()
 
-                    const myAccessToken = myAccessTokenObject?.token
+    //                 const myAccessToken = myAccessTokenObject?.token
 
-                    const transport = nodemailer.createTransport({
-                        service: 'gmail',
-                        auth: {
-                          type: 'OAuth2',
-                          user: 'todat999@gmail.com',
-                          clientId: CLIENT_ID,
-                          clientSecret: CLIENT_SECRET,
-                          refresh_token: REFRESH_TOKEN,
-                          accessToken: myAccessToken
-                        }
-                    })
+    //                 const transport = nodemailer.createTransport({
+    //                     service: 'gmail',
+    //                     auth: {
+    //                       type: 'OAuth2',
+    //                       user: 'todat999@gmail.com',
+    //                       clientId: CLIENT_ID,
+    //                       clientSecret: CLIENT_SECRET,
+    //                       refresh_token: REFRESH_TOKEN,
+    //                       accessToken: myAccessToken
+    //                     }
+    //                 })
 
-                    const mailOptions = {
-                        to: email, // Gửi đến ai?
-                        subject: title, // Tiêu đề email
-                        html: content // Nội dung email
-                    }
+    //                 const mailOptions = {
+    //                     to: email, // Gửi đến ai?
+    //                     subject: title, // Tiêu đề email
+    //                     html: content // Nội dung email
+    //                 }
 
-                    let info = await transport.sendMail(mailOptions)
-                    //console.log({ info });
+    //                 let info = await transport.sendMail(mailOptions)
+    //                 //console.log({ info });
 
-                })
+    //             })
 
-                return resolve({ error: false, data: 'Gửi email thành công' });
+    //             return resolve({ error: false, data: 'Gửi email thành công' });
 
-            } catch (error) {
+    //         } catch (error) {
 
-                return resolve({ error: true, message: error.message });
-            }
-        })
-    }
+    //             return resolve({ error: true, message: error.message });
+    //         }
+    //     })
+    // }
     
 }
